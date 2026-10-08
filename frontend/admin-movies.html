@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <!-- MovieBox favicon / brand icon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180x180.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>MovieBox Admin - Movies</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #070709;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            padding: 24px 16px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            background: #0d0d10;
+        }
+
+        .admin-brand {
+            padding: 0 12px 28px;
+        }
+
+        .admin-brand h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .admin-brand h1 span {
+            color: #e50914;
+        }
+
+        .admin-brand p {
+            margin-top: 6px;
+            color: #777780;
+            font-size: 12px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .admin-nav a {
+            display: block;
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 9px;
+            color: #a9a9b1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            background: rgba(229, 9, 20, 0.12);
+            color: #ffffff;
+        }
+
+        .admin-main {
+            flex: 1;
+            padding: 32px;
+            overflow-x: hidden;
+        }
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .admin-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .admin-header p {
+            margin-top: 7px;
+            color: #85858e;
+            font-size: 14px;
+        }
+
+        .movie-search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .movie-search-box input {
+            flex: 1;
+            height: 48px;
+            padding: 0 15px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 10px;
+            outline: none;
+            background: #101014;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .movie-search-box input:focus {
+            border-color: #e50914;
+        }
+
+        .movie-search-box button {
+            height: 48px;
+            padding: 0 22px;
+            border: 0;
+            border-radius: 10px;
+            background: #e50914;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .movies-panel {
+            min-height: 300px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            background: #101014;
+        }
+
+        .movies-panel-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .movies-empty {
+            min-height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #777780;
+            font-size: 14px;
+        }
+
+.movie-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.movie-result-card {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    background: #0d0d10;
+}
+
+.movie-result-poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: block;
+    object-fit: cover;
+    background: #18181c;
+}
+
+.movie-result-info {
+    padding: 13px;
+}
+
+.movie-result-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.movie-result-meta {
+    margin-top: 7px;
+    color: #85858e;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.movie-result-id {
+    margin-top: 4px;
+    color: #66666f;
+    font-size: 11px;
+}
+
+.movie-result-actions {
+    margin-top: 12px;
+}
+
+.movie-action-btn {
+    width: 100%;
+    height: 38px;
+    border: 0;
+    border-radius: 8px;
+    background: #e50914;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.movie-action-btn:hover {
+    opacity: 0.9;
+}
+.movie-edit-btn {
+    margin-top: 8px;
+    background: #24242a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.movie-edit-btn:hover {
+    background: #303038;
+}
+.movie-edit-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.movie-edit-modal.hidden {
+    display: none;
+}
+
+.movie-edit-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8px);
+}
+
+.movie-edit-box {
+    position: relative;
+    z-index: 1;
+    width: min(620px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    background: #101014;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.55);
+}
+
+.movie-edit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.movie-edit-header h3 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.movie-edit-header p {
+    margin-top: 5px;
+    color: #777780;
+    font-size: 12px;
+}
+
+.movie-edit-close {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: #1c1c21;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.movie-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px;
+}
+
+.movie-edit-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #a9a9b1;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.movie-edit-form input,
+.movie-edit-form textarea {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 9px;
+    outline: none;
+    background: #0b0b0e;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.movie-edit-form input {
+    height: 44px;
+}
+
+.movie-edit-form textarea {
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.movie-edit-form input:focus,
+.movie-edit-form textarea:focus {
+    border-color: #e50914;
+}
+
+.movie-edit-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.movie-edit-save-btn {
+    width: 100%;
+    height: 46px;
+    margin-top: 4px;
+    border: 0;
+    border-radius: 9px;
+    background: #e50914;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.movie-edit-save-btn:hover {
+    opacity: 0.9;
+}
+.movie-sources-editor {
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    background: #0b0b0e;
+}
+
+.movie-sources-editor-title {
+    margin-bottom: 14px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.movie-source-item {
+    padding: 14px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.movie-source-item:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.movie-source-name {
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.movie-source-item input {
+    width: 100%;
+    height: 40px;
+    margin-top: 7px;
+    padding: 0 11px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    outline: none;
+    background: #101014;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.movie-source-item input:focus {
+    border-color: #e50914;
+}
+
+.movie-source-label {
+    display: block;
+    margin-top: 9px;
+    color: #777780;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+    .movie-edit-modal {
+        padding: 12px;
+    }
+
+    .movie-edit-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .movie-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}
+
+        @media (max-width: 700px) {
+            .admin-layout {
+                display: block;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .admin-main {
+                padding: 22px 16px;
+            }
+
+            .admin-header {
+                display: block;
+            }
+
+            .movie-search-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-brand">
+                <h1>Movie<span>Box</span></h1>
+                <p>Administration Panel</p>
+            </div>
+
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html">Dashboard</a>
+                <a href="admin-movies.html" class="active">Movies</a>
+                <a href="#">Series</a>
+                <a href="#">Featured Lists</a>
+                <a href="#">Hero / Home</a>
+                <a href="#">Ads Control</a>
+                <a href="#">Sources</a>
+                <a href="#">Settings</a>
+            </nav>
+
+        </aside>
+
+        <main class="admin-main">
+
+            <header class="admin-header">
+                <div>
+                    <h2>Movies</h2>
+                    <p>Search and manage movies for MovieBox.</p>
+                </div>
+            </header>
+
+            <div class="movie-search-box">
+                <input
+                    type="text"
+                    id="movie-search-input"
+                    placeholder="Search movie by name or TMDB ID..."
+                >
+
+                <button type="button">
+                    Search
+                </button>
+            </div>
+
+            <section class="movies-panel">
+
+                <div class="movies-panel-title">
+                    Movie Management
+                </div>
+
+                <div class="movies-empty">
+                    Search for a movie to manage it.
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+<script>
+    function escapeHtml(value) {
+        if (value === null || value === undefined) return "";
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    const searchInput = document.getElementById("movie-search-input");
+    const searchButton = document.querySelector(".movie-search-box button");
+    const moviesPanel = document.querySelector(".movies-panel");
+
+function editMovieInMovieBox(encodedMovie) {
+
+    const movie = JSON.parse(
+        decodeURIComponent(encodedMovie)
+    );
+
+    document.getElementById("movie-edit-id").textContent =
+        `TMDB ID: ${movie.tmdbId || movie.id || ""}`;
+
+    document.getElementById("edit-movie-title").value =
+        movie.title ||
+        movie.name ||
+        "";
+
+    document.getElementById("edit-movie-poster").value =
+        movie.poster ||
+        "";
+
+    document.getElementById("edit-movie-backdrop").value =
+        movie.backdrop ||
+        "";
+
+    document.getElementById("edit-movie-overview").value =
+        movie.overview ||
+        "";
+
+    document.getElementById("edit-movie-rating").value =
+        movie.rating ?? "";
+
+    document.getElementById("edit-movie-runtime").value =
+        movie.runtime || "";
+
+    document.getElementById("edit-movie-release-date").value =
+        movie.release_date ||
+        "";
+
+    document.getElementById("movie-edit-modal")
+        .classList.remove("hidden");
+
+    window.currentEditingMovie = movie;
+}
+function closeMovieEditModal() {
+
+    document.getElementById("movie-edit-modal")
+        .classList.add("hidden");
+
+    window.currentEditingMovie = null;
+}
+async function saveMovieChanges() {
+
+    const movie = window.currentEditingMovie;
+
+    if (!movie) {
+        alert("No movie selected for editing.");
+        return;
+    }
+
+    const tmdbId =
+        movie.tmdbId ||
+        movie.id;
+
+    if (!tmdbId) {
+        alert("Valid TMDB ID is required.");
+        return;
+    }
+
+    const updatedMovie = {
+
+        title:
+            document.getElementById(
+                "edit-movie-title"
+            ).value.trim(),
+
+        poster:
+            document.getElementById(
+                "edit-movie-poster"
+            ).value.trim(),
+
+        backdrop:
+            document.getElementById(
+                "edit-movie-backdrop"
+            ).value.trim(),
+
+        overview:
+            document.getElementById(
+                "edit-movie-overview"
+            ).value.trim(),
+
+        rating:
+            Number(
+                document.getElementById(
+                    "edit-movie-rating"
+                ).value
+            ),
+
+        runtime:
+            Number(
+                document.getElementById(
+                    "edit-movie-runtime"
+                ).value
+            ),
+
+        release_date:
+            document.getElementById(
+                "edit-movie-release-date"
+            ).value
+    };
+
+    try {
+
+        const response = await fetch(
+            `http://localhost:4000/api/movies/${tmdbId}`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(updatedMovie)
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(
+            "UPDATE MOVIE RESPONSE:",
+            data
+        );
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Unable to update movie."
+            );
+
+            return;
+        }
+
+        alert(
+            data.message ||
+            "Movie updated successfully."
+        );
+
+        closeMovieEditModal();
+
+        searchMovies();
+
+    } catch (error) {
+
+        console.error(
+            "Update movie error:",
+            error
+        );
+
+        alert(
+            "Unable to connect to MovieBox backend."
+        );
+    }
+}
+
+async function addMovieToMovieBox(encodedMovie, button) {
+
+    const movie = JSON.parse(
+        decodeURIComponent(encodedMovie)
+    );
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:4000/api/movies/add",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(movie)
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(
+            "ADD MOVIE RESPONSE:",
+            data
+        );
+
+        if (response.status === 409) {
+
+            button.textContent =
+                "Remove from MovieBox";
+
+            button.dataset.mode =
+                "remove";
+
+            button.onclick = function () {
+                removeMovieFromMovieBox(
+                    encodedMovie,
+                    button
+                );
+            };
+
+            return;
+        }
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Unable to add movie."
+            );
+
+            return;
+        }
+
+        button.textContent =
+            "Remove from MovieBox";
+
+        button.dataset.mode =
+            "remove";
+
+        button.onclick = function () {
+            removeMovieFromMovieBox(
+                encodedMovie,
+                button
+            );
+        };
+
+        alert(
+            data.message ||
+            "Movie added to MovieBox."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Add movie error:",
+            error
+        );
+
+        alert(
+            "Unable to connect to MovieBox backend."
+        );
+    }
+}
+async function removeMovieFromMovieBox(encodedMovie, button) {
+
+    const movie = JSON.parse(
+        decodeURIComponent(encodedMovie)
+    );
+
+    const tmdbId =
+        movie.tmdbId ||
+        movie.id;
+
+    if (!tmdbId) {
+        alert("Valid TMDB ID is required.");
+        return;
+    }
+
+    const confirmed = confirm(
+        "Remove this movie from MovieBox?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `http://localhost:4000/api/movies/${tmdbId}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(
+            "REMOVE MOVIE RESPONSE:",
+            data
+        );
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Unable to remove movie."
+            );
+
+            return;
+        }
+
+        button.textContent =
+            "Add to MovieBox";
+
+        button.dataset.mode =
+            "add";
+
+        button.onclick = function () {
+            addMovieToMovieBox(
+                encodedMovie,
+                button
+            );
+        };
+
+        alert(
+            data.message ||
+            "Movie removed from MovieBox."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Remove movie error:",
+            error
+        );
+
+        alert(
+            "Unable to connect to MovieBox backend."
+        );
+    }
+}
+
+   async function searchMovies() {
+    const query = searchInput.value.trim();
+
+    if (!query) {
+        moviesPanel.innerHTML = `
+            <div class="movies-panel-title">
+                Movie Management
+            </div>
+
+            <div class="movies-empty">
+                Enter a movie name to search.
+            </div>
+        `;
+        return;
+    }
+
+    moviesPanel.innerHTML = `
+        <div class="movies-panel-title">
+            Movie Management
+        </div>
+
+        <div class="movies-empty">
+            Searching for "${escapeHtml(query)}"...
+        </div>
+    `;
+
+    try {
+        const response = await fetch(
+            `http://localhost:4000/api/movies/search?query=${encodeURIComponent(query)}`
+        );
+
+        if (!response.ok) {
+            throw new Error("Search failed");
+        }
+
+        const data = await response.json();
+console.log("ADMIN SEARCH RESPONSE:", data);
+
+        const movies = Array.isArray(data)
+    ? data
+    : Array.isArray(data.results)
+        ? data.results
+        : Array.isArray(data.movies)
+            ? data.movies
+            : [];
+
+const managedResponse = await fetch(
+    "http://localhost:4000/api/movies/managed"
+);
+
+const managedData = await managedResponse.json();
+
+const managedMovies =
+    Array.isArray(managedData.movies)
+        ? managedData.movies
+        : [];
+
+const managedIds = new Set(
+    managedMovies.map(movie =>
+        Number(movie.tmdbId || movie.id)
+    )
+);
+
+        if (movies.length === 0) {
+            moviesPanel.innerHTML = `
+                <div class="movies-panel-title">
+                    Movie Management
+                </div>
+
+                <div class="movies-empty">
+                    No movies found.
+                </div>
+            `;
+            return;
+        }
+
+        const movieCards = movies.map(movie => {
+            const title =
+                movie.title ||
+                movie.name ||
+                "Untitled";
+
+            const releaseDate =
+                movie.release_date ||
+                movie.first_air_date ||
+                "";
+
+            const year = releaseDate
+                ? releaseDate.slice(0, 4)
+                : "N/A";
+
+            const mediaType =
+                movie.media_type ||
+                (movie.first_air_date ? "tv" : "movie");
+
+            const type =
+                mediaType === "tv"
+                    ? "SERIES"
+                    : "MOVIE";
+
+            const tmdbId =
+                movie.id ||
+                "N/A";
+
+const poster =
+    movie.poster ||
+    "";
+
+            return `
+                <article class="movie-result-card">
+
+                    ${
+                        poster
+                            ? `
+                                <img
+                                    class="movie-result-poster"
+                                    src="${poster}"
+                                    alt="${escapeHtml(title)}"
+                                    loading="lazy"
+                                >
+                            `
+                            : `
+                                <div class="movie-result-poster"></div>
+                            `
+                    }
+
+                    <div class="movie-result-info">
+
+                        <div class="movie-result-title">
+                            ${escapeHtml(title)}
+                        </div>
+
+                        <div class="movie-result-meta">
+                            ${type} • ${year}
+                        </div>
+
+                        <div class="movie-result-id">
+                            TMDB ID: ${escapeHtml(tmdbId)}
+                        </div>
+
+<div class="movie-result-actions">
+
+    ${
+        managedIds.has(Number(tmdbId))
+            ? `
+                <button
+                    type="button"
+                    class="movie-action-btn"
+                    data-mode="remove"
+                    onclick='removeMovieFromMovieBox("${encodeURIComponent(JSON.stringify(movie))}", this)'
+                >
+                    Remove from MovieBox
+                </button>
+
+                <button
+                    type="button"
+                    class="movie-action-btn movie-edit-btn"
+                    onclick='editMovieInMovieBox("${encodeURIComponent(JSON.stringify(movie))}")'
+                >
+                    Edit Movie
+                </button>
+            `
+            : `
+                <button
+                    type="button"
+                    class="movie-action-btn"
+                    data-mode="add"
+                    onclick='addMovieToMovieBox("${encodeURIComponent(JSON.stringify(movie))}", this)'
+                >
+                    Add to MovieBox
+                </button>
+            `
+    }
+
+</div>
+
+                    </div>
+
+                </article>
+            `;
+        }).join("");
+
+        moviesPanel.innerHTML = `
+            <div class="movies-panel-title">
+                Search Results (${movies.length})
+            </div>
+
+            <div class="movie-results">
+                ${movieCards}
+            </div>
+        `;
+
+    } catch (error) {
+        console.error("Admin movie search error:", error);
+
+        moviesPanel.innerHTML = `
+            <div class="movies-panel-title">
+                Movie Management
+            </div>
+
+            <div class="movies-empty">
+                Movie search is currently unavailable.
+            </div>
+        `;
+    }
+}
+    searchButton.addEventListener("click", searchMovies);
+
+    searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            searchMovies();
+        }
+    });
+</script>
+
+<div id="movie-edit-modal" class="movie-edit-modal hidden">
+
+    <div
+        class="movie-edit-modal-backdrop"
+        onclick="closeMovieEditModal()"
+    ></div>
+
+    <div class="movie-edit-box">
+
+        <div class="movie-edit-header">
+            <div>
+                <h3>Edit Movie</h3>
+                <p id="movie-edit-id"></p>
+            </div>
+
+            <button
+                type="button"
+                class="movie-edit-close"
+                onclick="closeMovieEditModal()"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="movie-edit-form">
+
+            <label>
+                Movie Title
+                <input
+                    type="text"
+                    id="edit-movie-title"
+                >
+            </label>
+
+            <label>
+                Poster URL
+                <input
+                    type="text"
+                    id="edit-movie-poster"
+                >
+            </label>
+
+            <label>
+                Backdrop URL
+                <input
+                    type="text"
+                    id="edit-movie-backdrop"
+                >
+            </label>
+
+            <label>
+                Overview
+                <textarea
+                    id="edit-movie-overview"
+                    rows="5"
+                ></textarea>
+            </label>
+
+            <div class="movie-edit-row">
+
+                <label>
+                    Rating
+                    <input
+                        type="number"
+                        id="edit-movie-rating"
+                        min="0"
+                        max="10"
+                        step="0.1"
+                    >
+                </label>
+
+                <label>
+                    Runtime
+                    <input
+                        type="number"
+                        id="edit-movie-runtime"
+                        min="0"
+                    >
+                </label>
+
+            </div>
+
+           <label>
+    Release Date
+    <input
+        type="date"
+        id="edit-movie-release-date"
+    >
+</label>
+
+<div class="movie-sources-editor">
+
+    <div class="movie-sources-editor-title">
+        Streaming Sources
+    </div>
+
+    <div id="movie-sources-list">
+        <!-- Sources will appear here -->
+    </div>
+
+</div>
+
+<button
+    type="button"
+    class="movie-edit-save-btn"
+    onclick="saveMovieChanges()"
+>
+    Save Changes
+</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

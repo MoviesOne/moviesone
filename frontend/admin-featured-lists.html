@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <!-- MovieBox favicon / brand icon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180x180.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>Featured Lists - MovieBox Admin</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #070709;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .admin-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            padding: 24px 16px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            background: #0d0d10;
+        }
+
+        .admin-brand {
+            padding: 0 12px 28px;
+        }
+
+        .admin-brand h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .admin-brand h1 span {
+            color: #e50914;
+        }
+
+        .admin-brand p {
+            margin-top: 6px;
+            color: #777780;
+            font-size: 12px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .admin-nav button {
+            width: 100%;
+            padding: 13px 14px;
+            border: 0;
+            border-radius: 9px;
+            background: transparent;
+            color: #a9a9b1;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .admin-nav button:hover,
+        .admin-nav button.active {
+            background: rgba(229, 9, 20, 0.12);
+            color: #ffffff;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .admin-main {
+            flex: 1;
+            padding: 32px;
+            overflow-x: hidden;
+        }
+
+        .admin-header {
+            margin-bottom: 30px;
+        }
+
+        .admin-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .admin-header p {
+            margin-top: 7px;
+            color: #85858e;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FEATURED LIST GRID
+        ========================= */
+
+        .featured-lists-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .featured-list-card {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            background: #101014;
+        }
+
+        .featured-list-poster {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #18181c;
+            color: #66666f;
+            font-size: 13px;
+        }
+
+        .featured-list-info {
+            padding: 18px;
+        }
+
+        .featured-list-title {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .featured-list-description {
+            margin-top: 7px;
+            color: #777780;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .featured-list-actions {
+            margin-top: 16px;
+        }
+
+        .featured-list-manage-btn {
+            width: 100%;
+            height: 40px;
+            border: 0;
+            border-radius: 8px;
+            background: #e50914;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .featured-list-manage-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .featured-lists-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .admin-sidebar {
+                width: 210px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .admin-layout {
+                display: block;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                border-right: 0;
+                border-bottom:
+                    1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .admin-main {
+                padding: 22px 16px;
+            }
+
+            .featured-lists-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+.featured-manage-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.featured-manage-modal.hidden {
+    display: none;
+}
+
+.featured-manage-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8px);
+}
+
+.featured-manage-box {
+    position: relative;
+    z-index: 1;
+    width: min(560px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    background: #101014;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.55);
+}
+
+.featured-manage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.featured-manage-header h3 {
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.featured-manage-header p {
+    margin-top: 5px;
+    color: #777780;
+    font-size: 12px;
+}
+
+.featured-manage-close {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: #1c1c21;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.featured-manage-content {
+    padding: 22px;
+}
+
+.featured-current-poster {
+    width: 180px;
+    aspect-ratio: 2 / 3;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #18181c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #66666f;
+    font-size: 12px;
+}
+
+.featured-current-poster img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.featured-poster-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #a9a9b1;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.featured-poster-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 9px;
+    outline: none;
+    background: #0b0b0e;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.featured-poster-input:focus {
+    border-color: #e50914;
+}
+
+.featured-manage-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.featured-save-btn,
+.featured-delete-btn {
+    height: 44px;
+    border: 0;
+    border-radius: 9px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.featured-save-btn {
+    background: #e50914;
+}
+
+.featured-delete-btn {
+    background: #24242a;
+}
+
+.featured-save-btn:hover,
+.featured-delete-btn:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 500px) {
+
+    .featured-manage-modal {
+        padding: 12px;
+    }
+
+    .featured-manage-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- =========================
+             SIDEBAR
+        ========================= -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-brand">
+
+                <h1>
+                    Movie<span>Box</span>
+                </h1>
+
+                <p>
+                    Administration Panel
+                </p>
+
+            </div>
+
+            <nav class="admin-nav">
+
+                <button
+                    onclick="window.location.href='admin-dashboard.html'"
+                >
+                    Dashboard
+                </button>
+
+                <button>
+                    Movies
+                </button>
+
+                <button>
+                    Series
+                </button>
+
+                <button class="active">
+                    Featured Lists
+                </button>
+
+                <button>
+                    Hero / Home
+                </button>
+
+                <button>
+                    Ads Control
+                </button>
+
+                <button>
+                    Sources
+                </button>
+
+                <button>
+                    Settings
+                </button>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================= -->
+
+        <main class="admin-main">
+
+            <header class="admin-header">
+
+                <h2>
+                    Featured Lists
+                </h2>
+
+                <p>
+                    Manage your MovieBox featured collections.
+                </p>
+
+            </header>
+
+
+          <section
+    id="featured-lists-grid"
+    class="featured-lists-grid"
+>
+</section>
+
+
+                <!-- =========================
+                     ANIME SERIES
+                ========================= -->
+
+                <article class="featured-list-card">
+
+                    <div class="featured-list-poster">
+                        Poster
+                    </div>
+
+                    <div class="featured-list-info">
+
+                        <h3 class="featured-list-title">
+                            Anime Series
+                        </h3>
+
+                        <p class="featured-list-description">
+                            Explore popular anime series.
+                        </p>
+
+                        <div class="featured-list-actions">
+
+                            <button
+                                type="button"
+                                class="featured-list-manage-btn"
+                            >
+                                Manage
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     ANIMATION
+                ========================= -->
+
+                <article class="featured-list-card">
+
+                    <div class="featured-list-poster">
+                        Poster
+                    </div>
+
+                    <div class="featured-list-info">
+
+                        <h3 class="featured-list-title">
+                            Animation
+                        </h3>
+
+                        <p class="featured-list-description">
+                            Explore animated movies.
+                        </p>
+
+                        <div class="featured-list-actions">
+
+                            <button
+                                type="button"
+                                class="featured-list-manage-btn"
+                            >
+                                Manage
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     KOREAN
+                ========================= -->
+
+                <article class="featured-list-card">
+
+                    <div class="featured-list-poster">
+                        Poster
+                    </div>
+
+                    <div class="featured-list-info">
+
+                        <h3 class="featured-list-title">
+                            Korean Drama &amp; Movies
+                        </h3>
+
+                        <p class="featured-list-description">
+                            Explore Korean movies.
+                        </p>
+
+                        <div class="featured-list-actions">
+
+                            <button
+                                type="button"
+                                class="featured-list-manage-btn"
+                            >
+                                Manage
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     MARVEL
+                ========================= -->
+
+                <article class="featured-list-card">
+
+                    <div class="featured-list-poster">
+                        Poster
+                    </div>
+
+                    <div class="featured-list-info">
+
+                        <h3 class="featured-list-title">
+                            The Marvel Universe
+                        </h3>
+
+                        <p class="featured-list-description">
+                            Explore Marvel movies.
+                        </p>
+
+                        <div class="featured-list-actions">
+
+                            <button
+                                type="button"
+                                class="featured-list-manage-btn"
+                            >
+                                Manage
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================
+                     DC
+                ========================= -->
+
+                <article class="featured-list-card">
+
+                    <div class="featured-list-poster">
+                        Poster
+                    </div>
+
+                    <div class="featured-list-info">
+
+                        <h3 class="featured-list-title">
+                            The DC Universe
+                        </h3>
+
+                        <p class="featured-list-description">
+                            Explore DC movies.
+                        </p>
+
+                        <div class="featured-list-actions">
+
+                            <button
+                                type="button"
+                                class="featured-list-manage-btn"
+                            >
+                                Manage
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script>
+
+async function loadFeaturedLists() {
+
+    const container =
+        document.getElementById(
+            "featured-lists-grid"
+        );
+
+    if (!container) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:4000/api/featured-lists"
+        );
+
+        const data =
+            await response.json();
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load featured lists."
+            );
+
+        }
+
+        const lists =
+            Array.isArray(data.lists)
+                ? data.lists
+                : [];
+
+        if (!lists.length) {
+
+            container.innerHTML = `
+                <div class="movie-empty">
+                    No featured lists found.
+                </div>
+            `;
+
+            return;
+        }
+
+        container.innerHTML =
+            lists.map(list => `
+
+                <article
+                    class="featured-list-card"
+                >
+
+                    <div
+                        class="featured-list-poster"
+                    >
+                        ${
+                            list.poster
+                                ? `
+                                    <img
+                                        src="${list.poster}"
+                                        alt="${list.title}"
+                                        style="
+                                            width:100%;
+                                            height:100%;
+                                            object-fit:cover;
+                                            display:block;
+                                        "
+                                    >
+                                `
+                                : `
+                                    Poster
+                                `
+                        }
+                    </div>
+
+                    <div
+                        class="featured-list-info"
+                    >
+
+                        <h3
+                            class="featured-list-title"
+                        >
+                            ${list.title}
+                        </h3>
+
+                        <p
+                            class="featured-list-description"
+                        >
+                            ${list.description}
+                        </p>
+
+                        <div
+                            class="featured-list-actions"
+                        >
+
+                            <button
+    type="button"
+    class="featured-list-manage-btn"
+    onclick='openFeaturedManageModal(${JSON.stringify(list).replace(/'/g, "&#039;")})'
+>
+    Manage
+</button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            `).join("");
+
+    } catch (error) {
+
+        console.error(
+            "Featured lists error:",
+            error
+        );
+
+        container.innerHTML = `
+            <div class="movie-empty">
+                Unable to load featured lists.
+            </div>
+        `;
+
+    }
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadFeaturedLists
+);
+function openFeaturedManageModal(list) {
+
+    document.getElementById(
+        "featured-manage-title"
+    ).textContent =
+        list.title || "Manage Featured List";
+
+    document.getElementById(
+        "featured-manage-id"
+    ).textContent =
+        `ID: ${list.id || ""}`;
+
+    document.getElementById(
+        "featured-poster-input"
+    ).value =
+        list.poster || "";
+
+    const posterContainer =
+        document.getElementById(
+            "featured-current-poster"
+        );
+
+    posterContainer.innerHTML =
+        list.poster
+            ? `
+                <img
+                    src="${list.poster}"
+                    alt="${list.title || ""}"
+                >
+            `
+            : "Poster";
+
+    document.getElementById(
+        "featured-manage-modal"
+    ).classList.remove("hidden");
+
+    window.currentFeaturedList = list;
+}
+
+
+function closeFeaturedManageModal() {
+
+    document.getElementById(
+        "featured-manage-modal"
+    ).classList.add("hidden");
+
+    window.currentFeaturedList = null;
+}
+async function saveFeaturedPoster() {
+
+    const list =
+        window.currentFeaturedList;
+
+    if (!list) {
+        alert("No featured list selected.");
+        return;
+    }
+
+    const posterInput =
+        document.getElementById(
+            "featured-poster-input"
+        );
+
+    const poster =
+        posterInput.value.trim();
+
+    try {
+
+        const response = await fetch(
+            `http://localhost:4000/api/featured-lists/${encodeURIComponent(list.id)}`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    poster: poster
+                })
+            }
+        );
+
+        const data =
+            await response.json();
+
+        console.log(
+            "FEATURED POSTER UPDATE:",
+            data
+        );
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Unable to save poster."
+            );
+
+            return;
+        }
+
+        alert(
+            data.message ||
+            "Poster saved successfully."
+        );
+
+        closeFeaturedManageModal();
+
+        loadFeaturedLists();
+
+    } catch (error) {
+
+        console.error(
+            "Save featured poster error:",
+            error
+        );
+
+        alert(
+            "Unable to connect to MovieBox backend."
+        );
+    }
+}
+
+</script>
+
+<div
+    id="featured-manage-modal"
+    class="featured-manage-modal hidden"
+>
+
+    <div
+        class="featured-manage-backdrop"
+        onclick="closeFeaturedManageModal()"
+    ></div>
+
+    <div class="featured-manage-box">
+
+        <div class="featured-manage-header">
+
+            <div>
+
+                <h3 id="featured-manage-title">
+                    Manage Featured List
+                </h3>
+
+                <p id="featured-manage-id"></p>
+
+            </div>
+
+            <button
+                type="button"
+                class="featured-manage-close"
+                onclick="closeFeaturedManageModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="featured-manage-content">
+
+            <div
+                id="featured-current-poster"
+                class="featured-current-poster"
+            >
+                Poster
+            </div>
+
+            <label
+                class="featured-poster-label"
+                for="featured-poster-input"
+            >
+                Poster URL
+            </label>
+
+            <input
+                type="text"
+                id="featured-poster-input"
+                class="featured-poster-input"
+                placeholder="Enter poster URL"
+            >
+
+            <div class="featured-manage-actions">
+
+              <button
+    type="button"
+    class="featured-save-btn"
+    onclick="saveFeaturedPoster()"
+>
+    Save Poster
+</button>
+
+                <button
+                    type="button"
+                    class="featured-delete-btn"
+                >
+                    Delete Poster
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

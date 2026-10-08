@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <!-- MovieBox favicon / brand icon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180x180.png">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MovieBox - Movies & TV Series</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+<script src="./js/seo.js"></script>
+
+  <!-- Main CSS -->
+<link rel="stylesheet" href="./css/style.css">
+
+<!-- Download Sheet CSS -->
+<link rel="stylesheet" href="./css/download-sheet.css">
+
+<!-- Series CSS -->
+<link rel="stylesheet" href="./css/series.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<!-- =========================
+     MoviesOne SEO
+========================= -->
+
+<title>MoviesOne - Watch Movies & TV Shows Online</title>
+
+<meta
+    name="description"
+    content="Discover movies, TV shows, new releases, trending titles and popular series on MoviesOne. Explore our latest entertainment collection."
+>
+
+<meta name="robots" content="index, follow">
+
+<link
+    rel="canonical"
+    href="https://YOUR-DOMAIN.com/"
+>
+
+<!-- Favicon -->
+<link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="./assets/favicon-32x32.png"
+>
+
+<link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="./assets/favicon-192x192.png"
+>
+
+<link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="./assets/favicon-180x180.png"
+>
+
+<!-- Theme -->
+<meta name="theme-color" content="#0b0b0e">
+
+<!-- =========================
+     Open Graph
+========================= -->
+
+<meta property="og:type" content="website">
+
+<meta
+    property="og:title"
+    content="MoviesOne - Watch Movies & TV Shows Online"
+>
+
+<meta
+    property="og:description"
+    content="Discover movies, TV shows, new releases, trending titles and popular series on MoviesOne."
+>
+
+<meta
+    property="og:url"
+    content="https://YOUR-DOMAIN.com/"
+>
+
+<meta
+    property="og:site_name"
+    content="MoviesOne"
+>
+
+<meta
+    property="og:image"
+    content="https://YOUR-DOMAIN.com/assets/og-image.jpg"
+>
+
+<meta
+    property="og:image:alt"
+    content="MoviesOne - Movies and TV Shows"
+>
+
+<!-- =========================
+     Twitter / X
+========================= -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta
+    name="twitter:title"
+    content="MoviesOne - Watch Movies & TV Shows Online"
+>
+
+<meta
+    name="twitter:description"
+    content="Discover movies, TV shows, new releases, trending titles and popular series on MoviesOne."
+>
+
+<meta
+    name="twitter:image"
+    content="https://YOUR-DOMAIN.com/assets/og-image.jpg"
+>
+
+<!-- =========================
+     WebSite Structured Data
+========================= -->
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MoviesOne",
+    "url": "https://YOUR-DOMAIN.com/",
+    "description": "Discover movies, TV shows, new releases, trending titles and popular series on MoviesOne."
+}
+</script>
+
+<!-- =========================
+     Organization Structured Data
+========================= -->
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MoviesOne",
+    "url": "https://YOUR-DOMAIN.com/",
+    "logo": "https://YOUR-DOMAIN.com/assets/favicon-512x512.png"
+}
+</script>
+
+<script>
+(function () {
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("movie") || params.get("tv")) {
+
+        const style = document.createElement("style");
+
+        style.textContent = `
+            #home-screen {
+                display: none !important;
+            }
+
+            footer {
+                display: none !important;
+            }
+        `;
+
+        document.head.appendChild(style);
+
+        const checkScreens = setInterval(() => {
+
+            const movieScreen =
+                document.getElementById("movie-screen");
+
+            const tvScreen =
+                document.getElementById("tv-screen");
+
+            const movieOpen =
+                movieScreen &&
+                !movieScreen.classList.contains("hidden");
+
+            const tvOpen =
+                tvScreen &&
+                !tvScreen.classList.contains("hidden");
+
+            if (movieOpen || tvOpen) {
+
+style.remove();
+clearInterval(checkScreens);
+            }
+
+        }, 20);
+
+    }
+
+})();
+</script>
+
+</head>
+
+<body class="bg-[#070709] text-white">
+
+   <div id="sidebar-container"></div>
+
+
+
+    <!-- Sidebar Overlay -->
+    <div
+        id="sidebar-overlay"
+        onclick="toggleSidebar()"
+        class="fixed inset-0 z-40 hidden bg-black/70"
+    ></div>
+
+
+    <!-- =========================================
+         MAIN APP
+    ========================================== -->
+
+    <div id="app" class="min-h-screen">
+
+        <!-- Header -->
+        <header
+            class="sticky top-0 z-30 border-b border-white/10 bg-[#070709]/95 backdrop-blur-xl"
+        >
+
+            <div class="flex h-[72px] items-center gap-4 px-4 md:px-6">
+
+                <!-- Menu -->
+                <button
+                    onclick="toggleSidebar()"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-white/80 transition hover:bg-white/10 hover:text-white"
+                >
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
+
+
+                <!-- Back -->
+                <button
+                    onclick="navigateTo('home')"
+                    class="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-white/80 transition hover:bg-white/10 hover:text-white md:flex"
+                >
+                    <i data-lucide="arrow-left" class="h-5 w-5"></i>
+                </button>
+
+
+                <!-- Search -->
+                <div class="relative max-w-xl flex-1">
+
+                    <i
+                        data-lucide="search"
+                        class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40"
+                    ></i>
+
+                    <input
+                        
+    id="global-search"
+    type="text"
+    placeholder="Search movies, TV shows..."
+    onclick="openSearchScreen()"
+                        class="h-11 w-full rounded-xl border border-white/10 bg-white/5 pl-11 pr-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-white/20"
+                    >
+
+                </div>
+
+
+                <!-- Ad cycle timer -->
+                <span id="ad-cycle-badge" data-phase="ads" aria-live="off"
+                    class="shrink-0 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-400 inline-flex items-center">
+                    Ads Window: 10:00
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             PAGE CONTENT
+        ========================================== -->
+
+        <main id="page-content">
+
+            <!-- HOME -->
+            <section id="home-screen" class="page-screen">
+
+                <!-- Reserved display ad slot: add ad provider code here later -->
+                
+
+                <!-- Hero -->
+               <section class="hero-card relative min-h-[520px] overflow-hidden">
+
+                    <div
+                        id="home-hero-backdrop"
+                        class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: linear-gradient(to right, #070709 0%, rgba(7,7,9,.85) 35%, rgba(7,7,9,.25) 70%, #070709 100%), linear-gradient(to top, #070709 0%, transparent 50%);"
+                    ></div>
+
+                    <div class="relative mx-auto flex min-h-[520px] max-w-[1600px] items-end px-5 pb-14 md:px-10 lg:px-14">
+
+                        <div class="max-w-2xl">
+
+                            <div class="mb-4 flex items-center gap-2 text-sm font-bold text-[#ff4d00]">
+                                <span>🔥</span>
+                                <span>NOW TRENDING</span>
+                            </div>
+
+                            <h1
+                                id="hero-title"
+                                class="text-4xl font-extrabold tracking-tight md:text-6xl"
+                            >
+                                MovieBox
+                            </h1>
+
+                            <p
+                                id="hero-description"
+                                class="mt-4 max-w-xl text-sm leading-7 text-white/60 md:text-base"
+                            >
+                                Discover the latest, trending and popular movies and TV series all in one place.
+                            </p>
+
+                            <div class="mt-7 flex flex-wrap gap-3">
+
+                                <button
+                                    onclick="scrollToLatest()"
+                                    class="flex items-center gap-2 rounded-xl bg-[#ff4d00] px-6 py-3 text-sm font-bold transition hover:brightness-110"
+                                >
+                                    <i data-lucide="play" class="h-4 w-4 fill-current"></i>
+                                    Explore
+                                </button>
+
+                                <button
+                                    onclick="navigateTo('movies')"
+                                    class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-bold transition hover:bg-white/10"
+                                >
+                                    <i data-lucide="clapperboard" class="h-4 w-4"></i>
+                                    Browse Movies
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+<!-- Streaming Platforms -->
+<section class="streaming-platforms-section">
+    <div class="streaming-platforms-row">
+
+     <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('netflix')"
+>
+            <div class="streaming-platform-logo netflix-logo">
+                NETFLIX
+            </div>
+            <span>Netflix</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('prime-video')"
+>
+            <div class="streaming-platform-logo prime-logo">
+                prime video
+            </div>
+            <span>Prime Video</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('hulu')"
+>
+            <div class="streaming-platform-logo hulu-logo">
+                hulu
+            </div>
+            <span>Hulu</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('disney-plus')"
+>
+            <div class="streaming-platform-logo disney-logo">
+                Disney+
+            </div>
+            <span>Disney+</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('apple-tv-plus')"
+>
+            <div class="streaming-platform-logo apple-logo">
+                tv+
+            </div>
+            <span>Apple TV+</span>
+        </button>
+
+        <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('max')"
+>
+            <div class="streaming-platform-logo max-logo">
+                max
+            </div>
+            <span>Max</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('paramount')"
+>
+            <div class="streaming-platform-logo paramount-logo">
+                PARAMOUNT+
+            </div>
+            <span>Paramount+</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('peacock')"
+>
+            <div class="streaming-platform-logo peacock-logo">
+                peacock
+            </div>
+            <span>Peacock</span>
+        </button>
+
+       <button
+    class="streaming-platform-card"
+    type="button"
+    onclick="openPlatform('jiohotstar')"
+>
+            <div class="streaming-platform-logo jio-logo">
+                JioHotstar
+            </div>
+            <span>JioHotstar</span>
+        </button>
+
+    </div>
+</section>
+
+                <!-- Popular Movies -->
+                <section
+                    id="latest-section"
+                    class="mx-auto max-w-[1600px] px-5 py-10 md:px-10 lg:px-14"
+                >
+
+                    <div class="mb-5 flex items-center justify-between">
+
+                        <div>
+                            <h2 class="text-xl font-extrabold md:text-2xl">
+                                Popular Movies
+                            </h2>
+
+                            <p class="mt-1 text-sm text-white/40">
+                                Popular movies for you
+                            </p>
+                        </div>
+
+                       <button
+    onclick="window.location.href='popular.html'"
+    class="text-sm font-semibold text-orange-400 transition hover:text-orange-300"
+>
+    View All
+</button>
+
+                    </div>
+
+
+                    <div
+                        id="popular-movies-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    >
+
+                        <!-- Movie cards will load here -->
+
+                    </div>
+
+                </section>
+
+
+                <!-- Trending TV -->
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5 flex items-center justify-between">
+
+                        <div>
+                            <h2 class="text-xl font-extrabold md:text-2xl">
+                                Trending TV Series
+                            </h2>
+
+                            <p class="mt-1 text-sm text-white/40">
+                                Trending shows right now
+                            </p>
+                        </div>
+
+                        <button
+    onclick="window.location.href='trending-tv.html'"
+    class="text-sm font-semibold text-orange-400 transition hover:text-orange-300"
+>
+    View All
+</button>
+
+
+                    </div>
+
+
+                    <div
+                        id="trending-tv-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <!-- New Releases -->
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                  <div class="mb-5 flex items-center justify-between">
+
+    <div>
+        <h2 class="text-xl font-extrabold md:text-2xl">
+            New Releases
+        </h2>
+
+        <p class="mt-1 text-sm text-white/40">
+            Recently released content
+        </p>
+    </div>
+
+    <a
+        href="new-releases.html"
+        class="text-sm font-semibold text-white/60 transition hover:text-white"
+    >
+        View More
+    </a>
+
+</div>
+
+
+                    <div
+                        id="new-releases-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <!-- Top 10 Movies -->
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5">
+                        <h2 class="text-xl font-extrabold md:text-2xl">
+                            Top 10 Movies
+                        </h2>
+                    </div>
+
+                    <div
+                        id="top-movies-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <!-- Top 10 Shows -->
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5">
+                        <h2 class="text-xl font-extrabold md:text-2xl">
+                            Top 10 Shows
+                        </h2>
+                    </div>
+
+                    <div
+                        id="top-shows-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <!-- Genre Sections -->
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5">
+                        <h2 class="text-xl font-extrabold md:text-2xl">
+                            Horror
+                        </h2>
+                    </div>
+
+                    <div
+                        id="horror-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5">
+                        <h2 class="text-xl font-extrabold md:text-2xl">
+                            Comedy
+                        </h2>
+                    </div>
+
+                    <div
+                        id="comedy-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5">
+                        <h2 class="text-xl font-extrabold md:text-2xl">
+                            Action
+                        </h2>
+                    </div>
+
+                    <div
+                        id="action-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+                <section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+                    <div class="mb-5">
+                        <h2 class="text-xl font-extrabold md:text-2xl">
+                            Sci-Fi
+                        </h2>
+                    </div>
+
+                    <div
+                        id="scifi-grid"
+                        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                    ></div>
+
+                </section>
+
+
+
+                
+
+                <!-- ROMANCE -->
+<section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+    <div class="mb-5">
+        <h2 class="text-xl font-extrabold md:text-2xl">
+            Romance
+        </h2>
+    </div>
+
+    <div
+        id="romance-grid"
+        class="home-horizontal-row"
+    ></div>
+
+</section>
+
+
+<!-- THRILLER -->
+<section class="mx-auto max-w-[1600px] px-5 py-6 md:px-10 lg:px-14">
+
+    <div class="mb-5">
+        <h2 class="text-xl font-extrabold md:text-2xl">
+            Thriller
+        </h2>
+    </div>
+
+    <div
+        id="thriller-grid"
+        class="home-horizontal-row"
+    ></div>
+
+</section>
+
+
+<!-- FEATURED LISTS -->
+<section class="featured-lists-section">
+
+    <div class="featured-lists-header">
+        <h2>Featured Lists</h2>
+    </div>
+
+    <div class="featured-lists-grid">
+
+        <!-- ANIME SERIES -->
+        <button
+            type="button"
+            class="featured-list-card"
+            data-featured-list="anime-series"
+        >
+            <div class="featured-list-image">
+                <img
+                    src="YOUR_ANIME_IMAGE_URL"
+                    alt="Anime Series"
+                >
+            </div>
+
+            <h3>Anime Series</h3>
+        </button>
+
+
+        <!-- ANIMATION -->
+        <button
+            type="button"
+            class="featured-list-card"
+            data-featured-list="animation"
+        >
+            <div class="featured-list-image">
+                <img
+                    src="YOUR_ANIMATION_IMAGE_URL"
+                    alt="Animation"
+                >
+            </div>
+
+            <h3>Animation</h3>
+        </button>
+
+
+        <!-- KOREAN DRAMA & MOVIES -->
+        <button
+            type="button"
+            class="featured-list-card"
+            data-featured-list="korean"
+        >
+            <div class="featured-list-image">
+                <img
+                    src="YOUR_KOREAN_IMAGE_URL"
+                    alt="Korean Drama & Movies"
+                >
+            </div>
+
+            <h3>Korean Drama & Movies</h3>
+        </button>
+
+
+        <!-- MARVEL UNIVERSE -->
+        <button
+            type="button"
+            class="featured-list-card"
+            data-featured-list="marvel"
+        >
+            <div class="featured-list-image">
+                <img
+                    src="YOUR_MARVEL_IMAGE_URL"
+                    alt="The Marvel Universe"
+                >
+            </div>
+
+            <h3>The Marvel Universe</h3>
+        </button>
+
+
+        <!-- DC UNIVERSE -->
+        <button
+            type="button"
+            class="featured-list-card"
+            data-featured-list="dc"
+        >
+            <div class="featured-list-image">
+                <img
+                    src="YOUR_DC_IMAGE_URL"
+                    alt="The DC Universe"
+                >
+            </div>
+
+            <h3>The DC Universe</h3>
+        </button>
+
+    </div>
+
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const featuredCards =
+            document.querySelectorAll(
+                ".featured-list-card"
+            );
+
+
+        /* =========================================
+           LOAD FEATURED LIST POSTERS FROM BACKEND
+        ========================================== */
+
+        fetch("http://localhost:4000/api/featured-lists")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+
+                if (!data.success || !Array.isArray(data.lists)) {
+                    return;
+                }
+
+                data.lists.forEach(function (list) {
+
+                    const card =
+                        document.querySelector(
+                            `.featured-list-card[data-featured-list="${list.id}"]`
+                        );
+
+                    if (!card) {
+                        return;
+                    }
+
+                    const image =
+                        card.querySelector(
+                            ".featured-list-image img"
+                        );
+
+                    if (!image) {
+                        return;
+                    }
+
+                    if (list.poster) {
+
+                        image.src = list.poster;
+
+                    }
+
+                });
+
+            })
+            .catch(function (error) {
+
+                console.error(
+                    "Featured list posters error:",
+                    error
+                );
+
+            });
+
+
+        /* =========================================
+           EXISTING FEATURED LIST NAVIGATION
+        ========================================== */
+
+        featuredCards.forEach(function (card) {
+
+            card.addEventListener(
+                "click",
+                function () {
+
+                    const type =
+                        card.getAttribute(
+                            "data-featured-list"
+                        );
+
+                    if (!type) {
+                        return;
+                    }
+
+                    window.location.href =
+                        `featured-list.html?type=${encodeURIComponent(type)}`;
+
+                }
+            );
+
+        });
+
+    });
+</script>
+
+            </section>
+
+
+            <!-- MOVIE DETAIL -->
+            <section
+                id="movie-screen"
+                class="page-screen hidden"
+            >
+
+                <div id="movie-detail-content">
+                    <!-- Movie detail will be rendered by movie.js -->
+                </div>
+
+            </section>
+
+
+            <!-- TV DETAIL -->
+            <section
+                id="tv-screen"
+                class="page-screen hidden"
+            >
+
+                <div id="tv-detail-content">
+                    <!-- TV detail will be rendered later -->
+                </div>
+
+            </section>
+
+<!-- PLATFORM SCREEN -->
+<section id="platform-screen" class="screen hidden">
+    <div class="platform-page">
+
+      
+
+        <!-- Platform Header -->
+        <div class="platform-header">
+
+            <div class="platform-brand">
+                <div id="platform-page-logo" class="platform-page-logo">
+                    NETFLIX
+                </div>
+
+                <div>
+                    <h1 id="platform-page-title">Netflix</h1>
+                    <p id="platform-page-description">
+                        Movies and TV shows available on Netflix.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Movies / TV Toggle -->
+            <div class="platform-media-toggle">
+                <button
+                    id="platform-movies-tab"
+                    type="button"
+                    class="active"
+                    onclick="switchPlatformMedia('movie')"
+                >
+                    Movies
+                </button>
+
+                <button
+                    id="platform-tv-tab"
+                    type="button"
+                    onclick="switchPlatformMedia('tv')"
+                >
+                    TV Series
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Count -->
+        <div class="platform-results-bar">
+            <h2 id="platform-results-title">Netflix Movies</h2>
+
+            <span id="platform-results-count">
+                Loading...
+            </span>
+        </div>
+
+        <!-- Loading -->
+        <div
+            id="platform-loading"
+            class="platform-loading"
+        >
+            <div class="platform-spinner"></div>
+            <p>Loading titles...</p>
+        </div>
+
+        <!-- Error -->
+        <div
+            id="platform-error"
+            class="platform-error hidden"
+        >
+            <i data-lucide="circle-alert"></i>
+            <p id="platform-error-message">
+                Failed to load titles.
+            </p>
+            <button
+                type="button"
+                onclick="loadPlatformTitles()"
+            >
+                Try Again
+            </button>
+        </div>
+
+        <!-- Movies / TV Grid -->
+        <div
+            id="platform-results-grid"
+            class="movie-grid platform-results-grid"
+        ></div>
+
+    </div>
+</section>
+<!-- =========================================
+     SEARCH OVERLAY
+========================================= -->
+
+<section
+    id="search-screen"
+    class="search-overlay hidden"
+>
+
+    <div
+        class="search-overlay-bg"
+        onclick="closeSearchScreen()"
+    ></div>
+
+
+    <div class="search-modal">
+
+        <!-- HEADER -->
+
+        <div class="search-modal-header">
+
+            <h2>
+                Search
+            </h2>
+
+
+            <button
+                type="button"
+                class="search-close-btn"
+                onclick="closeSearchScreen()"
+            >
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- SEARCH BAR -->
+
+        <div class="search-modal-input">
+
+            <i
+                data-lucide="search"
+                class="search-modal-icon"
+            ></i>
+
+
+            <input
+                id="search-page-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Search..."
+            >
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <div
+            id="search-results"
+            class="search-modal-results"
+        >
+
+            <div class="search-empty-state">
+
+                <i data-lucide="search"></i>
+
+                <span>
+                    Search movies and series
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+            <section id="movies-screen" class="page-screen hidden px-5 py-10 md:px-10">
+                <h1 class="text-3xl font-extrabold">Movies</h1>
+                <div
+                    id="movies-grid"
+                    class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                ></div>
+            </section>
+
+
+            <section id="tv-shows-screen" class="page-screen hidden px-5 py-10 md:px-10">
+                <h1 class="text-3xl font-extrabold">TV Shows</h1>
+                <div
+                    id="tv-shows-grid"
+                    class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                ></div>
+            </section>
+
+
+
+<section id="ads-screen" class="page-screen hidden px-5 py-10">
+    <div class="max-w-4xl mx-auto space-y-8">
+
+        <div class="text-center space-y-3">
+            <h1 class="text-3xl md:text-4xl font-extrabold">Ads &amp; Support</h1>
+            <p class="text-gray-400">
+                Your support helps us keep MovieBox running and accessible.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-3">
+            <h2 class="text-xl font-bold">Why Do We Show Ads?</h2>
+            <p class="text-gray-300">
+                Ads help cover our server, bandwidth, and infrastructure costs.
+                Ads run for a short window and are automatically removed once
+                the monthly target is reached.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-3">
+            <h2 class="text-xl font-bold">Community Support</h2>
+            <p class="text-gray-300">
+                Join our Telegram community for updates and announcements.
+            </p>
+            <a href="https://t.me/moviesonex" target="_blank"
+               rel="noopener noreferrer"
+               class="inline-block rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white">
+                Join Telegram
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+                <h3 class="text-gray-400">Ads Window</h3>
+                <p class="text-3xl font-extrabold mt-2">10m</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+                <h3 class="text-gray-400">Ad-Free Window</h3>
+                <p class="text-3xl font-extrabold mt-2">10h</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+                <h3 class="text-gray-400">Interaction Limit</h3>
+                <p class="text-3xl font-extrabold mt-2">0m</p>
+            </div>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+            <h2 class="text-xl font-bold">How The Timer Works</h2>
+            <ol class="list-decimal list-inside space-y-3 text-gray-300">
+                <li>The interaction limit is set to 0 minutes.</li>
+                <li>The ads timer pauses when the tab is in the background.</li>
+                <li>The ad-free countdown continues as configured.</li>
+                <li>Timer data is synchronized using browser storage.</li>
+                <li>An encrypted, IP-bound cookie is used as configured.</li>
+                <li>Timer behavior may be updated to maintain fair use.</li>
+            </ol>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+            <h2 class="text-xl font-bold">Conditions &amp; Fair Use</h2>
+            <ul class="list-disc list-inside space-y-3 text-gray-300">
+                <li>Do not use bots or automated interactions.</li>
+                <li>Do not tamper with browser storage or timer data.</li>
+                <li>Anti-manipulation measures may be updated.</li>
+                <li>Ad and ad-free cycles may change when required.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ABOUT US -->
+<section id="about-screen" class="page-screen hidden px-5 py-10">
+    <div class="mx-auto max-w-4xl space-y-8">
+
+        <div class="space-y-3 text-center">
+            <h1 class="text-3xl font-extrabold md:text-4xl">
+                About MoviesOne
+            </h1>
+            <p class="text-white/60">
+                Your ultimate ad-free streaming experience, built for speed,
+                simplicity, and endless entertainment.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-3">
+            <h2 class="text-xl font-bold">Our Goal</h2>
+            <p class="text-white/70 leading-7">
+                Our primary goal is to make entertainment accessible and
+                completely <strong>ads-free</strong>. We believe that watching
+                your favorite movies and TV shows shouldn't be interrupted by
+                annoying pop-ups or hidden redirects. MoviesOne is built to
+                provide a clean, seamless, and premium viewing experience
+                for everyone.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+            <h2 class="text-xl font-bold">Core Features</h2>
+            <ul class="space-y-3 text-white/70">
+                <li>✓ Just 10 min of ads, then hours of ad-free streaming</li>
+                <li>✓ Fast, multi-server streaming</li>
+                <li>✓ Huge library of Movies &amp; TV Shows</li>
+                <li>✓ Clean &amp; intuitive interface</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-3">
+            <h2 class="text-xl font-bold">Privacy First</h2>
+            <p class="font-semibold text-white">Your data belongs to you.</p>
+            <p class="text-white/70 leading-7">
+                We don't use intrusive trackers, sell your data, or analyze
+                your habits for malicious purposes. Stream securely and
+                anonymously.
+            </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+            <h2 class="text-xl font-bold">What's New on MoviesOne</h2>
+            <p class="text-white/70 leading-7">
+                We keep improving the platform with better stream stability,
+                faster fallback between servers, and a smoother player
+                experience. Our focus is simple: less friction, more watching.
+            </p>
+            <ul class="space-y-3 text-white/70">
+                <li>• Smarter stream failover for fewer playback interruptions</li>
+                <li>• Cleaner player controls with subtitle and audio improvements</li>
+                <li>• Ongoing performance and reliability updates across providers</li>
+            </ul>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+            <h2 class="text-xl font-bold">DMCA &amp; Legal Information</h2>
+            <p class="text-white/70 leading-7">
+                MoviesOne does not host any of the media files (video files,
+                movies, TV shows, etc.) found on this website. All content is
+                provided by non-affiliated third parties.
+            </p>
+            <p class="text-white/70 leading-7">
+                We are a proxy/indexer mechanism that simply points to media
+                hosted elsewhere on the internet. As such, MoviesOne is not
+                responsible for the accuracy, compliance, copyright, legality,
+                or decency of material contained in third-party sites.
+            </p>
+            <p class="text-white/70 leading-7">
+                If you are a copyright owner or an agent thereof and believe
+                that any content on this site infringes upon your copyrights,
+                please refer to our full
+                <a href="https://faxflix.site"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="text-blue-400 hover:underline">DMCA Policy</a>
+                for instructions on how to submit a takedown notice.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- HELP & SUPPORT -->
+<section id="help-screen" class="hidden w-full px-4 py-6 md:px-8">
+    <div class="mx-auto max-w-5xl space-y-8">
+
+        <!-- Header -->
+        <div class="space-y-2">
+            <h1 class="text-3xl font-bold text-white md:text-4xl">
+                Help &amp; Support
+            </h1>
+            <p class="max-w-2xl text-sm leading-6 text-white/60 md:text-base">
+                Need help? Find answers below, join our community, or get in touch with us directly.
+            </p>
+        </div>
+
+        <!-- Support Cards -->
+        <div class="grid gap-4 md:grid-cols-2">
+
+            <!-- Telegram -->
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/10 text-sky-400">
+                    <i data-lucide="send" class="h-6 w-6"></i>
+                </div>
+
+                <h2 class="mb-2 text-lg font-semibold text-white">
+                    Join Telegram
+                </h2>
+
+                <p class="mb-5 text-sm leading-6 text-white/60">
+                    Stay updated with new features, announcements, and get community support on our Telegram channel.
+                </p>
+
+                <a
+                    href="https://t.me/moviesonex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-400"
+                >
+                    Join Channel
+                    <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+            </div>
+
+            <!-- Report Error -->
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+                    <i data-lucide="bug" class="h-6 w-6"></i>
+                </div>
+
+                <h2 class="mb-2 text-lg font-semibold text-white">
+                    Report an Error
+                </h2>
+
+                <p class="mb-5 text-sm leading-6 text-white/60">
+                    Found a broken stream, missing episode, or any bug? Let us know so we can fix it.
+                </p>
+
+                <a
+                    href="https://t.me/moviesonex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                    Report Error
+                    <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Tips -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-white">
+                Quick Tips
+            </h2>
+
+            <div class="grid gap-4 md:grid-cols-2">
+                <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400">
+                        <i data-lucide="wifi" class="h-5 w-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-1 font-semibold text-white">
+                            Video Buffering?
+                        </h3>
+                        <p class="text-sm leading-6 text-white/60">
+                            Switch servers or refresh the page. A clean cache usually helps.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-400">
+                        <i data-lucide="users" class="h-5 w-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-1 font-semibold text-white">
+                            Community First
+                        </h3>
+                        <p class="text-sm leading-6 text-white/60">
+                            Join our Telegram for real-time updates, fixes, and community discussions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="space-y-4">
+            <div>
+                <h2 class="text-xl font-bold text-white">
+                    Frequently Asked Questions
+                </h2>
+                <p class="mt-1 text-sm text-white/50">
+                    Click a question to expand the answer.
+                </p>
+            </div>
+
+            <div class="space-y-3">
+
+                <details class="group rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-white">
+                        <span>Why is a video not playing?</span>
+                        <i data-lucide="chevron-down" class="h-5 w-5 shrink-0 text-white/50 transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 border-t border-white/10 pt-3 text-sm leading-6 text-white/60">
+                        Try switching to a different server using the server selector below the player. If the issue persists, clear your browser cache or try a different browser.
+                    </p>
+                </details>
+
+                <details class="group rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-white">
+                        <span>How do I add something to Watch Later?</span>
+                        <i data-lucide="chevron-down" class="h-5 w-5 shrink-0 text-white/50 transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 border-t border-white/10 pt-3 text-sm leading-6 text-white/60">
+                        Click the bookmark icon on any movie or TV show card to save it to your Watch Later list.
+                    </p>
+                </details>
+
+                <details class="group rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-white">
+                        <span>Can I download movies or episodes?</span>
+                        <i data-lucide="chevron-down" class="h-5 w-5 shrink-0 text-white/50 transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 border-t border-white/10 pt-3 text-sm leading-6 text-white/60">
+                        Download options may be available for some titles or episodes. If a download button is shown, follow the available instructions and make sure you have the necessary rights to download the content.
+                    </p>
+                </details>
+
+                <details class="group rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-white">
+                        <span>Why do some episodes have no video?</span>
+                        <i data-lucide="chevron-down" class="h-5 w-5 shrink-0 text-white/50 transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 border-t border-white/10 pt-3 text-sm leading-6 text-white/60">
+                        Some episodes may not have a working stream available. Try another server if one is provided, or report the missing video through our support channel.
+                    </p>
+                </details>
+
+                <details class="group rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-white">
+                        <span>How do I change the video server?</span>
+                        <i data-lucide="chevron-down" class="h-5 w-5 shrink-0 text-white/50 transition group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 border-t border-white/10 pt-3 text-sm leading-6 text-white/60">
+                        Open the movie or series player and use the server selector below the video player to choose another available server.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- DMCA & LEGAL -->
+<section id="legal-screen" class="page-screen hidden px-5 py-10 md:px-10 lg:px-14">
+    <div class="mx-auto max-w-4xl">
+
+        <div class="mb-8 border-b border-white/10 pb-6">
+            <div class="mb-3 flex items-center gap-2 text-sm font-semibold text-[#ff4d00]">
+                <i data-lucide="shield-check" class="h-5 w-5"></i>
+                <span>LEGAL INFORMATION</span>
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-tight md:text-4xl">
+                DMCA Notice &amp; Disclaimer
+            </h1>
+            <p class="mt-3 text-sm leading-6 text-white/50 md:text-base">
+                Important information about content hosting and copyright policies
+            </p>
+        </div>
+
+        <div class="space-y-8 text-sm leading-7 text-white/65 md:text-base">
+
+            <section class="rounded-2xl border border-[#ff4d00]/20 bg-[#ff4d00]/5 p-5 md:p-6">
+                <h2 class="mb-2 text-lg font-bold text-white">Important Notice</h2>
+                <p>
+                    This website does not host any movies, TV shows, or media files on its own servers.
+                    All content is provided by non-affiliated third-party public providers.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="mb-2 text-xl font-bold text-white">DMCA Notice</h2>
+                <p class="mb-4 text-sm text-white/40">
+                    Digital Millennium Copyright Act compliance information
+                </p>
+                <p class="mb-4">
+                    This website operates in accordance with the Digital Millennium Copyright Act (DMCA).
+                    We respect the intellectual property rights of others and expect our users to do the same.
+                </p>
+
+                <div class="space-y-4">
+                    <p><strong class="text-white">Content Hosting:</strong>
+                        We do not host, store, or distribute any copyrighted material on our servers.
+                        All content is indexed from publicly available sources on the internet.
+                    </p>
+                    <p><strong class="text-white">Third-Party Content:</strong>
+                        All movies, TV shows, and media content are provided by non-affiliated third-party
+                        providers. We merely index and provide links to content found publicly available
+                        on the internet.
+                    </p>
+                    <p><strong class="text-white">Content Removal:</strong>
+                        If you believe that any content accessible through our service infringes your
+                        copyright, please contact the original content provider or hosting service directly.
+                    </p>
+                </div>
+            </section>
+
+            <section class="border-t border-white/10 pt-7">
+                <h2 class="mb-2 text-xl font-bold text-white">Disclaimer</h2>
+                <p class="mb-4 text-sm text-white/40">Legal disclaimer and terms of service</p>
+
+                <div class="space-y-4">
+                    <p><strong class="text-white">No Hosting:</strong>
+                        This website does not host any movies, TV shows, or media files on its own servers.
+                    </p>
+                    <p><strong class="text-white">Third-Party Sources:</strong>
+                        All content is provided by non-affiliated third-party public providers that are
+                        freely available on the internet.
+                    </p>
+                    <p><strong class="text-white">Content Indexing:</strong>
+                        We merely index links and content found publicly on the Internet and provide a
+                        search interface.
+                    </p>
+                    <p><strong class="text-white">Legal Issues:</strong>
+                        If you have any legal issues or copyright concerns, please contact the appropriate
+                        media file owners or host sites directly.
+                    </p>
+                    <p><strong class="text-white">User Responsibility:</strong>
+                        Users are responsible for ensuring their use of any content complies with
+                        applicable laws in their jurisdiction.
+                    </p>
+                </div>
+            </section>
+
+            <section class="border-t border-white/10 pt-7">
+                <h2 class="mb-2 text-xl font-bold text-white">Contact Information</h2>
+                <p class="mb-5 text-sm text-white/40">
+                    How to reach us regarding copyright concerns
+                </p>
+
+                <div class="space-y-5">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+                        <h3 class="mb-2 font-bold text-white">For Copyright Holders</h3>
+                        <p class="mb-3">
+                            If you are a copyright holder and believe that content accessible through
+                            our service infringes your rights, please note that we do not host the
+                            content directly.
+                        </p>
+                        <p><strong class="text-white">Recommended Action:</strong>
+                            Contact the hosting provider or original source of the content directly
+                            for fastest resolution.
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+                        <h3 class="mb-2 font-bold text-white">Technical Issues</h3>
+                        <p class="mb-3">
+                            For technical issues with the website functionality, broken links, or
+                            other non-copyright related matters, you may contact us through our
+                            support channels.
+                        </p>
+                        <p><strong class="text-white">Note:</strong>
+                            We cannot assist with content-related copyright issues as we do not
+                            control the source material.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="border-t border-white/10 pt-7">
+                <h2 class="mb-2 text-xl font-bold text-white">Fair Use Statement</h2>
+                <p class="mb-4 text-sm text-white/40">
+                    Information about fair use and educational purposes
+                </p>
+                <p class="mb-4">
+                    This website may contain copyrighted material the use of which has not always
+                    been specifically authorized by the copyright owner. We believe this constitutes
+                    a 'fair use' of any such copyrighted material as provided for in section 107 of
+                    the US Copyright Law.
+                </p>
+                <div class="space-y-4">
+                    <p><strong class="text-white">Educational Purpose:</strong>
+                        The material on this site is distributed without profit for research and
+                        educational purposes. If you wish to use copyrighted material from this site
+                        for purposes of your own that go beyond 'fair use', you must obtain permission
+                        from the copyright owner.
+                    </p>
+                    <p><strong class="text-white">Good Faith Compliance:</strong>
+                        We operate in good faith and aim to comply with all applicable copyright
+                        laws. We do not encourage or condone copyright infringement.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</section>
+
+        </main>
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <footer class="border-t border-white/10 px-5 py-10 md:px-10">
+
+            <div class="mx-auto flex max-w-[1600px] flex-col gap-4 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
+
+                <p>
+                    © 2026 MoviesOne. All rights reserved.
+                </p>
+
+                <div class="flex gap-5">
+
+                    <button class="hover:text-white">
+                        DMCA
+                    </button>
+
+                    <button class="hover:text-white">
+                        Privacy
+                    </button>
+
+                    <button class="hover:text-white">
+                        Terms
+                    </button>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+   <script src="./js/api.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/movie.js"></script>
+<script src="./js/download-sheet.js"></script>
+<script src="./js/home.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/settings.js"></script>
+<script src="./js/ad-cycle.js"></script>
+
+<!-- DOWNLOAD BOTTOM SHEET -->
+<div class="download-sheet" id="downloadSheet">
+<div
+    class="download-sheet-backdrop"
+    id="sheetBackdrop"
+    data-download-close
+
+></div>
+  <div class="download-sheet-panel">
+    <div class="download-sheet-handle"></div>
+<div class="download-sheet-header">
+
+    <div class="header-text">
+
+        <span class="download-sheet-kicker">
+            DOWNLOAD
+        </span>
+
+        <h2 id="downloadSheetTitle">
+            Download • The Odyssey
+        </h2>
+
+        <p id="downloadSheetSubtitle">
+            Choose your preferred download option
+        </p>
+
+    </div>
+<button
+    class="download-sheet-close"
+    id="sheetCloseBtn"
+    data-download-close
+    aria-label="Close"
+    type="button"
+>
+    ×
+</button>
+
+</div>
+    <!-- 6 BUTTONS GRID -->
+    <div class="download-sheet-content">
+      
+      <!-- OPTION 1: ScreenScope (Itachi) -->
+      <div class="card-wrapper">
+        <div class="option-label label-itachi">OPTION 1</div>
+        <button
+    type="button"
+    class="anime-card anime-sharingan-card"
+    data-download-option="1"
+    data-shatter-colors="#ff1e2e,#ff4d4d,#ffffff,#000000"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-itachi explode-target">
+              <svg viewBox="0 0 120 120">
+                <defs>
+                  <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ff1e2e"/>
+                    <stop offset="60%" stop-color="#cc0818"/>
+                    <stop offset="85%" stop-color="#73000b"/>
+                    <stop offset="100%" stop-color="#260003"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="60" cy="60" r="58" fill="url(#irisGrad)" stroke="#110002" stroke-width="4"/>
+                <g fill="#000000">
+                  <path d="M60 60 C 50 34, 55 10, 60 2 C 68 18, 74 42, 60 60 Z"/>
+                  <path d="M60 60 C 50 34, 55 10, 60 2 C 68 18, 74 42, 60 60 Z" transform="rotate(120 60 60)"/>
+                  <path d="M60 60 C 50 34, 55 10, 60 2 C 68 18, 74 42, 60 60 Z" transform="rotate(240 60 60)"/>
+                </g>
+                <circle cx="60" cy="60" r="11" fill="#000000"/>
+                <circle cx="60" cy="60" r="4" fill="#ff2636"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-itachi explode-target">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-red">SCREENSCOPE</span>
+              <span class="subtitle sub-red">ScreenScope DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-red" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+         </button>
+      </div>
+
+      <!-- OPTION 2: 02 MDR (Byakugan) -->
+      <div class="card-wrapper">
+        <div class="option-label label-byakugan">OPTION 2</div>
+       <button
+    type="button"
+    class="anime-card anime-byakugan-card"
+    data-download-option="2"
+    data-shatter-colors="#ffffff,#d8b4fe,#c084fc,#4c1d95"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-byakugan explode-target">
+              <svg viewBox="0 0 100 100">
+                <defs>
+                  <radialGradient id="byakuganIris" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="40%" stop-color="#f3e8ff"/>
+                    <stop offset="70%" stop-color="#d8b4fe"/>
+                    <stop offset="90%" stop-color="#a855f7"/>
+                    <stop offset="100%" stop-color="#581c87"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="50" cy="50" r="48" fill="url(#byakuganIris)" stroke="#ffffff" stroke-width="2.5"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="6,3" opacity="0.8"/>
+                <circle cx="50" cy="50" r="14" fill="#ffffff" stroke="#c084fc" stroke-width="2"/>
+                <circle cx="50" cy="50" r="4" fill="#a855f7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-whitepurple explode-target">
+              <svg class="download-icon icon-dark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-whitepurple">02 MDR</span>
+              <span class="subtitle sub-whitepurple">Multi Audio</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-whitepurple" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          </button>
+      </div>
+
+      <!-- OPTION 3: NHD (Kurama) -->
+      <div class="card-wrapper">
+        <div class="option-label label-yellow">OPTION 3</div>
+      <button
+    type="button"
+    class="anime-card anime-kurama-card"
+    data-download-option="3"
+    data-shatter-colors="#fde047,#f59e0b,#ea580c,#ffffff"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-kurama explode-target">
+              <svg viewBox="0 0 120 100">
+                <polygon points="34,44 14,8 44,28" fill="#ea580c"/>
+                <polygon points="86,44 106,8 76,28" fill="#ea580c"/>
+                <path d="M30 46 L46 36 L74 36 L90 46 L96 66 L78 84 L60 92 L42 84 L24 66 Z" fill="#f59e0b" stroke="#9a3412" stroke-width="2"/>
+                <polygon points="40,55 48,52 47,58 42,59" fill="#ef4444"/>
+                <polygon points="80,55 72,52 73,58 78,59" fill="#ef4444"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-yellow explode-target">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-yellow">NHD</span>
+              <span class="subtitle sub-yellow">NHD Download</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-yellow" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+       </button>
+      </div>
+
+      <!-- OPTION 4: Streamrip (Sasuke) -->
+      <div class="card-wrapper">
+        <div class="option-label label-purple">OPTION 4</div>
+      <button
+    type="button"
+    class="anime-card anime-purple-card"
+    data-download-option="4"
+    data-shatter-colors="#a855f7,#c084fc,#ffffff,#3b0764"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-sasuke explode-target">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="58" fill="#7e22ce" stroke="#1a0429" stroke-width="4"/>
+                <g stroke="#000000" stroke-width="5" stroke-linecap="round">
+                  <line x1="60" y1="8" x2="60" y2="112" />
+                  <line x1="15" y1="34" x2="105" y2="86" />
+                  <line x1="15" y1="86" x2="105" y2="34" />
+                </g>
+                <circle cx="60" cy="60" r="16" fill="#000000" stroke="#c084fc" stroke-width="2.2"/>
+                <circle cx="60" cy="60" r="5.5" fill="#ffffff"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-purple explode-target">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-purple">STREAMRIP</span>
+              <span class="subtitle sub-purple">Streamrip DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-purple" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+         </button>
+      </div>
+
+      <!-- OPTION 5: DDL -->
+      <div class="card-wrapper">
+        <div class="option-label label-ddl">OPTION 5</div>
+       <button
+    type="button"
+    class="anime-card anime-ddl-card"
+    data-download-option="5"
+    data-shatter-colors="#4ade80,#ef4444,#ffffff,#fef08a"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-ddl explode-target">
+              <svg viewBox="0 0 100 100">
+                <path d="M18 42 Q50 96 82 42 Z" fill="#ef4444" stroke="#ffffff" stroke-width="2.5"/>
+                <ellipse cx="50" cy="42" rx="34" ry="11" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-ddl explode-target">
+              <svg class="download-icon icon-ddl-dark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-ddl">DDL</span>
+              <span class="subtitle sub-ddl">High Quality DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-ddl" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+         </button>
+      </div>
+
+      <!-- OPTION 6: Nxsha (Dual Kunai Clash) -->
+      <div class="card-wrapper">
+        <div class="option-label label-kunai">OPTION 6</div>
+     <button
+    type="button"
+    class="anime-card anime-kunai-card"
+    data-download-option="6"
+    data-shatter-colors="#facc15,#ef4444,#ffffff,#7f1d1d"
+>
+          <div class="roaming-bg-layer">
+            <div class="kunai-orbit-box explode-target">
+              <div class="clash-spark"></div>
+              <svg class="kunai-item kunai-left" viewBox="0 0 60 60">
+                <polygon points="30,4 20,24 26,24 26,38 34,38 34,24 40,24" fill="#cbd5e1" stroke="#b91c1c" stroke-width="1.2"/>
+                <circle cx="30" cy="54" r="4.5" fill="none" stroke="#cbd5e1" stroke-width="2.2"/>
+              </svg>
+              <svg class="kunai-item kunai-right" viewBox="0 0 60 60">
+                <polygon points="30,4 20,24 26,24 26,38 34,38 34,24 40,24" fill="#fef08a" stroke="#b91c1c" stroke-width="1.2"/>
+                <circle cx="30" cy="54" r="4.5" fill="none" stroke="#fef08a" stroke-width="2.2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-kunai explode-target">
+              <svg class="download-icon icon-kunai-dark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-kunai">NXSHA</span>
+              <span class="subtitle sub-kunai">Fast Speed DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-kunai" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+fetch("./sidebar.html")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Sidebar load nahi hua");
+        }
+        return response.text();
+    })
+    .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+        if (window.lucide) {
+    lucide.createIcons();
+}
+    })
+    .catch(error => console.error("Sidebar error:", error));
+</script>
+
+<script>
+const targetScreen = new URLSearchParams(window.location.search).get("screen");
+
+if (["legal", "about", "help", "ads"].includes(targetScreen)) {
+    navigateTo(targetScreen);
+}
+</script>
+</body>
+</html>

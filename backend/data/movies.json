@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1358906,
+        "tmdbId": 1358906,
+        "title": "Live Spectacle Naruto",
+        "original_title": "ライブ・スペクタクル「NARUTO-ナルト-」",
+        "overview": "The 2016 re-run of the original Live Spectacle Naruto stage adaptation.",
+        "poster": "https://image.tmdb.org/t/p/w500/clwnMzvYQlIyUSpUW8i2ogJlEjb.jpg",
+        "backdrop": "",
+        "rating": 8.1,
+        "release_date": "2016-12-14",
+        "runtime": 0,
+        "genres": [],
+        "original_language": "ja",
+        "production_countries": [],
+        "media_type": "movie",
+        "number_of_seasons": 0,
+        "number_of_episodes": 0,
+        "sources": [
+            {
+                "name": "Screenscape",
+                "quality": "HD",
+                "embed": "https://nxsha.screenscape.me/embed?tmdb=1358906&type=movie&lan=eng",
+                "download": ""
+            },
+            {
+                "name": "Filmu movie",
+                "quality": "HD",
+                "embed": "https://embed.filmu.in/movie/1358906",
+                "download": ""
+            },
+            {
+                "name": "NHD Player",
+                "quality": "HD",
+                "embed": "https://nhdapi.com/movie/1358906",
+                "download": ""
+            },
+            {
+                "name": "Stream EMD",
+                "quality": "HD",
+                "embed": "https://watch.embed-api.stream/embed/movie/1358906",
+                "download": ""
+            },
+            {
+                "name": "Nex Stream",
+                "quality": "HD",
+                "embed": "https://api.codespecters.com/embed/movie/1358906?apikey=DEMO_36c097f0",
+                "download": ""
+            }
+        ],
+        "screenshots": []
+    }
+]

@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Keep admin and internal utility pages out of normal crawling.
+Disallow: /admin.html
+Disallow: /admin-dashboard.html
+Disallow: /admin-movies.html
+Disallow: /admin-featured-lists.html
+Disallow: /download-options.html
+
+# Sitemap is submitted in Google Search Console / Bing Webmaster Tools.
+# Add your live sitemap URL here after the production domain is known:
+# Sitemap: https://YOUR-DOMAIN.example/sitemap.xml

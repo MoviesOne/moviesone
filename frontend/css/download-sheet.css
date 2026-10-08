@@ -1,0 +1,1645 @@
+/* =========================================================
+   MOVIEBOX DOWNLOAD SHEET
+   CENTERED ANIMATIONS + FIXED SIZING
+========================================================= */
+
+
+/* =========================================================
+   DOWNLOAD SHEET
+========================================================= */
+
+.download-sheet {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.download-sheet.is-open {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   BACKDROP
+========================================================= */
+
+.download-sheet-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.download-sheet.is-open .download-sheet-backdrop {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.download-sheet-panel {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    width: min(900px, 100%);
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    transform: translate(-50%, 105%);
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255, 255, 255, 0.05),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            #111114 0%,
+            #070709 100%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 0;
+
+    border-radius: 26px 26px 0 0;
+
+    box-shadow:
+        0 -20px 90px rgba(0, 0, 0, 0.7);
+
+    transition:
+        transform 0.4s cubic-bezier(.22, 1, .36, 1);
+}
+
+.download-sheet.is-open .download-sheet-panel {
+    transform: translate(-50%, 0);
+}
+
+
+/* =========================================================
+   HANDLE
+========================================================= */
+
+.download-sheet-handle {
+    width: 48px;
+    height: 5px;
+
+    margin: 10px auto 4px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.download-sheet-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 18px 22px 16px;
+}
+
+.download-sheet-kicker {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #ff4d00;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.download-sheet-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.download-sheet-header p {
+    margin: 6px 0 0;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.download-sheet-close {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.download-sheet-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.download-sheet-close:active {
+    transform: scale(.92);
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.download-sheet-divider {
+    height: 1px;
+
+    margin: 0 22px;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================================
+   DOWNLOAD GRID
+========================================================= */
+
+.download-sheet-content {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    padding: 22px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD WRAPPER
+========================================================= */
+
+.download-sheet .card-wrapper {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   OPTION LABEL
+========================================================= */
+
+.download-sheet .option-label {
+    display: inline-block;
+
+    align-self: flex-start;
+
+    margin-bottom: 7px;
+
+    padding: 2px 7px;
+
+    border: 1.5px solid #ffffff;
+
+    border-radius: 5px;
+
+    font-family:
+        'Bungee',
+        'Rajdhani',
+        sans-serif;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    line-height: 1.2;
+
+    transform: rotate(-2deg);
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .option-label {
+        font-size: 11px;
+
+        padding: 3px 10px;
+
+        border-width: 2px;
+
+        border-radius: 6px;
+
+        margin-bottom: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN ANIME CARD
+========================================================= */
+
+.download-sheet .anime-card {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    min-height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 7px 8px;
+
+    border-radius: 11px;
+
+    border: 1.5px solid transparent;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    /*
+       IMPORTANT:
+       Keep hidden for roaming animation.
+       Shatter particles are handled by JS.
+    */
+    overflow: hidden;
+
+    perspective: 900px;
+
+    isolation: isolate;
+
+    -webkit-tap-highlight-color: transparent;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.14s ease,
+        box-shadow 0.14s ease,
+        filter 0.14s ease;
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .anime-card {
+        min-height: 68px;
+
+        padding: 10px 14px;
+
+        border-radius: 14px;
+    }
+
+}
+
+.download-sheet .anime-card:hover {
+    filter: brightness(1.08);
+}
+
+.download-sheet .anime-card:active {
+    transform: scale(.985);
+}
+
+
+/* =========================================================
+   CARD LEFT
+========================================================= */
+
+.download-sheet .card-left {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    position: relative;
+
+    z-index: 20;
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .card-left {
+        gap: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.download-sheet .text-content {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+
+    position: relative;
+
+    z-index: 20;
+}
+
+.download-sheet .title {
+    display: block;
+
+    max-width: 100%;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    text-transform: uppercase;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .title {
+        font-size: 15px;
+
+        letter-spacing: 0.6px;
+    }
+
+}
+
+.download-sheet .subtitle {
+    display: block;
+
+    max-width: 100%;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    letter-spacing: 0.1px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .subtitle {
+        font-size: 11px;
+
+        letter-spacing: 0.2px;
+    }
+
+}
+
+
+/* =========================================================
+   ICON BOXES
+========================================================= */
+
+.download-sheet .icon-box-itachi,
+.download-sheet .icon-box-whitepurple,
+.download-sheet .icon-box-yellow,
+.download-sheet .icon-box-purple,
+.download-sheet .icon-box-ddl,
+.download-sheet .icon-box-kunai {
+
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 30;
+
+    transform: rotate(-3deg);
+
+    border: 1.5px solid #ffffff;
+
+    border-radius: 7px;
+}
+
+
+/* ITACHI */
+
+.download-sheet .icon-box-itachi {
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff4d4d,
+            #b30000
+        );
+
+    box-shadow:
+        0 2px 0 #660000,
+        0 3px 6px rgba(0, 0, 0, .8),
+        inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+
+
+/* BYAKUGAN */
+
+.download-sheet .icon-box-whitepurple {
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #c084fc
+        );
+
+    box-shadow:
+        0 2px 0 #7e22ce,
+        0 3px 6px rgba(0, 0, 0, .8),
+        inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+
+/* KURAMA */
+
+.download-sheet .icon-box-yellow {
+
+    background:
+        linear-gradient(
+            145deg,
+            #fde047,
+            #f59e0b
+        );
+
+    box-shadow:
+        0 2px 0 #92400e,
+        0 3px 6px rgba(0, 0, 0, .8),
+        inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+
+
+/* SASUKE */
+
+.download-sheet .icon-box-purple {
+
+    background:
+        linear-gradient(
+            145deg,
+            #c084fc,
+            #7e22ce
+        );
+
+    box-shadow:
+        0 2px 0 #581c87,
+        0 3px 6px rgba(0, 0, 0, .8),
+        inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+
+
+/* DDL */
+
+.download-sheet .icon-box-ddl {
+
+    background:
+        linear-gradient(
+            135deg,
+            #4ade80 0%,
+            #ffffff 50%,
+            #ef4444 100%
+        );
+
+    box-shadow:
+        0 2px 0 #15803d,
+        0 3px 6px rgba(0, 0, 0, .8),
+        inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+
+/* KUNAI */
+
+.download-sheet .icon-box-kunai {
+
+    background:
+        linear-gradient(
+            135deg,
+            #facc15 0%,
+            #ef4444 100%
+        );
+
+    box-shadow:
+        0 2px 0 #991b1b,
+        0 3px 6px rgba(0, 0, 0, .8),
+        inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+
+@media (min-width: 640px) {
+
+    .download-sheet .icon-box-itachi,
+    .download-sheet .icon-box-whitepurple,
+    .download-sheet .icon-box-yellow,
+    .download-sheet .icon-box-purple,
+    .download-sheet .icon-box-ddl,
+    .download-sheet .icon-box-kunai {
+
+        width: 44px;
+        height: 44px;
+
+        border-width: 2px;
+
+        border-radius: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   DOWNLOAD ICON
+========================================================= */
+
+.download-sheet .download-icon {
+
+    width: 16px;
+    height: 16px;
+
+    stroke: #ffffff;
+
+    stroke-width: 2.8;
+
+    filter:
+        drop-shadow(
+            1px 1px 0 rgba(0, 0, 0, .9)
+        );
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .download-icon {
+
+        width: 22px;
+        height: 22px;
+    }
+
+}
+
+.download-sheet .icon-dark {
+    stroke: #2e1065;
+}
+
+.download-sheet .icon-ddl-dark {
+    stroke: #064e3b;
+}
+
+.download-sheet .icon-kunai-dark {
+    stroke: #450a0a;
+}
+
+
+/* =========================================================
+   EXTERNAL ICON
+========================================================= */
+
+.download-sheet .external-icon {
+
+    width: 14px;
+    height: 14px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 20;
+
+    margin-left: 4px;
+
+    stroke-width: 2.8;
+
+    transition:
+        transform 0.15s ease;
+}
+
+@media (min-width: 640px) {
+
+    .download-sheet .external-icon {
+
+        width: 18px;
+        height: 18px;
+
+        margin-left: 0;
+    }
+
+}
+
+.download-sheet .anime-card:hover .external-icon {
+
+    transform:
+        translate(
+            2px,
+            -2px
+        );
+}
+
+
+/* =========================================================
+   CARD THEMES
+========================================================= */
+
+
+/* ---------------- ITACHI ---------------- */
+
+.download-sheet .label-itachi {
+
+    color: #fff200;
+
+    background: #e71a2a;
+
+    box-shadow:
+        2px 2px 0 rgba(255, 255, 255, .2);
+}
+
+.download-sheet .anime-sharingan-card {
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(255, 30, 46, .28),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #180407,
+            #2a070b 48%,
+            #090909
+        );
+
+    border-color: #ff2b3e;
+
+    box-shadow:
+        0 3px 0 #b30f1e,
+        0 6px 0 #4a0208,
+        0 10px 18px rgba(255, 0, 20, .35);
+}
+
+.download-sheet .title-red {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(255, 43, 62, .9);
+}
+
+.download-sheet .sub-red {
+    color: #ff9da7;
+}
+
+.download-sheet .ext-red {
+
+    stroke: #fff200;
+
+    filter:
+        drop-shadow(
+            0 0 6px rgba(255, 242, 0, .6)
+        );
+}
+
+
+/* ---------------- BYAKUGAN ---------------- */
+
+.download-sheet .label-byakugan {
+
+    color: #2e1065;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 40%,
+            #e9d5ff 100%
+        );
+
+    box-shadow:
+        2px 2px 0 rgba(216, 180, 254, .5);
+}
+
+.download-sheet .anime-byakugan-card {
+
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(192, 132, 252, .22),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #17121c,
+            #241333 50%,
+            #090909
+        );
+
+    border-color: #d8b4fe;
+
+    box-shadow:
+        0 3px 0 #a855f7,
+        0 6px 0 #4c1d95,
+        0 10px 18px rgba(192, 132, 252, .4);
+}
+
+.download-sheet .title-whitepurple {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, .9),
+        0 0 14px rgba(192, 132, 252, .95);
+}
+
+.download-sheet .sub-whitepurple {
+    color: #e9d5ff;
+}
+
+.download-sheet .ext-whitepurple {
+
+    stroke: #ffffff;
+
+    filter:
+        drop-shadow(
+            0 0 6px rgba(255, 255, 255, .8)
+        )
+        drop-shadow(
+            0 0 10px #c084fc
+        );
+}
+
+
+/* ---------------- KURAMA ---------------- */
+
+.download-sheet .label-yellow {
+
+    color: #000000;
+
+    background: #facc15;
+
+    box-shadow:
+        2px 2px 0 rgba(250, 204, 21, .4);
+}
+
+.download-sheet .anime-kurama-card {
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(245, 158, 11, .25),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #201500,
+            #352100 50%,
+            #090909
+        );
+
+    border-color: #f59e0b;
+
+    box-shadow:
+        0 3px 0 #b45309,
+        0 6px 0 #78350f,
+        0 10px 18px rgba(245, 158, 11, .4);
+}
+
+.download-sheet .title-yellow {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(250, 204, 21, .95);
+}
+
+.download-sheet .sub-yellow {
+    color: #fed7aa;
+}
+
+.download-sheet .ext-yellow {
+
+    stroke: #f59e0b;
+
+    filter:
+        drop-shadow(
+            0 0 6px rgba(245, 158, 11, .9)
+        );
+}
+
+
+/* ---------------- SASUKE ---------------- */
+
+.download-sheet .label-purple {
+
+    color: #ffffff;
+
+    background: #9333ea;
+
+    box-shadow:
+        2px 2px 0 rgba(168, 85, 247, .4);
+}
+
+.download-sheet .anime-purple-card {
+
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(168, 85, 247, .28),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #15051f,
+            #270a3c 50%,
+            #090909
+        );
+
+    border-color: #a855f7;
+
+    box-shadow:
+        0 3px 0 #7e22ce,
+        0 6px 0 #3b0764,
+        0 10px 18px rgba(168, 85, 247, .4);
+}
+
+.download-sheet .title-purple {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(192, 132, 252, .95);
+}
+
+.download-sheet .sub-purple {
+    color: #e9d5ff;
+}
+
+.download-sheet .ext-purple {
+
+    stroke: #c084fc;
+
+    filter:
+        drop-shadow(
+            0 0 6px rgba(192, 132, 252, .8)
+        );
+}
+
+
+/* ---------------- DDL ---------------- */
+
+.download-sheet .label-ddl {
+
+    color: #064e3b;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4ade80 0%,
+            #ffffff 50%,
+            #f87171 100%
+        );
+
+    box-shadow:
+        2px 2px 0 rgba(74, 222, 128, .4);
+}
+
+.download-sheet .anime-ddl-card {
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(74, 222, 128, .20),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #071a10,
+            #102d1b 50%,
+            #090909
+        );
+
+    border-color: #4ade80;
+
+    box-shadow:
+        0 3px 0 #16a34a,
+        0 6px 0 #991b1b,
+        0 10px 18px rgba(74, 222, 128, .35);
+}
+
+.download-sheet .title-ddl {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 8px rgba(74, 222, 128, .9),
+        0 0 14px rgba(239, 68, 68, .9);
+}
+
+.download-sheet .sub-ddl {
+    color: #bbf7d0;
+}
+
+.download-sheet .ext-ddl {
+
+    stroke: #4ade80;
+
+    filter:
+        drop-shadow(
+            0 0 6px #4ade80
+        )
+        drop-shadow(
+            0 0 10px #ef4444
+        );
+}
+
+
+/* ---------------- KUNAI ---------------- */
+
+.download-sheet .label-kunai {
+
+    color: #450a0a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #facc15 0%,
+            #ef4444 100%
+        );
+
+    box-shadow:
+        2px 2px 0 rgba(250, 204, 21, .5);
+}
+
+.download-sheet .anime-kunai-card {
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(239, 68, 68, .22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #220607,
+            #3b0909 50%,
+            #090909
+        );
+
+    border-color: #facc15;
+
+    box-shadow:
+        0 3px 0 #dc2626,
+        0 6px 0 #7f1d1d,
+        0 10px 18px rgba(250, 204, 21, .35);
+}
+
+.download-sheet .title-kunai {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(250, 204, 21, .95),
+        0 0 16px rgba(239, 68, 68, .9);
+}
+
+.download-sheet .sub-kunai {
+    color: #fef08a;
+}
+
+.download-sheet .ext-kunai {
+
+    stroke: #facc15;
+
+    filter:
+        drop-shadow(
+            0 0 6px #facc15
+        )
+        drop-shadow(
+            0 0 10px #ef4444
+        );
+}
+
+
+/* =========================================================
+   ROAMING BACKGROUND
+========================================================= */
+
+.download-sheet .roaming-bg-layer {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    border-radius: inherit;
+
+    opacity: .85;
+}
+
+
+/* =========================================================
+   CENTERED WANDERING EYE
+========================================================= */
+
+.download-sheet .wandering-eye {
+
+    position: absolute;
+
+    width: 60px;
+    height: 60px;
+
+    /*
+       EXACT CENTER OF CARD
+    */
+    top: 50%;
+    left: 50%;
+
+    /*
+       HALF SIZE OFFSET
+       60 / 2 = 30
+    */
+    margin-left: -30px;
+    margin-top: -30px;
+
+    pointer-events: none;
+
+    animation:
+        allDirectionOrbit
+        7.8s
+        cubic-bezier(.42, 0, .58, 1)
+        infinite;
+}
+
+.download-sheet .wandering-eye svg {
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   CENTERED ORBIT
+========================================================= */
+
+@keyframes allDirectionOrbit {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(0deg)
+            scale(.92);
+    }
+
+    25% {
+        transform:
+            translate(-28px, -10px)
+            rotate(90deg)
+            scale(1.04);
+    }
+
+    50% {
+        transform:
+            translate(-48px, 0)
+            rotate(180deg)
+            scale(.90);
+    }
+
+    75% {
+        transform:
+            translate(-24px, 10px)
+            rotate(270deg)
+            scale(1.04);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            rotate(360deg)
+            scale(.92);
+    }
+
+}
+
+
+/* =========================================================
+   KUNAI ORBIT
+========================================================= */
+
+.download-sheet .kunai-orbit-box {
+
+    position: absolute;
+
+    width: 60px;
+    height: 60px;
+
+    /*
+       EXACT CENTER OF CARD
+    */
+    top: 50%;
+    left: 50%;
+
+    /*
+       HALF SIZE OFFSET
+    */
+    margin-left: -30px;
+    margin-top: -30px;
+
+    pointer-events: none;
+
+    z-index: 7;
+
+    animation:
+        allDirectionOrbit
+        7.8s
+        cubic-bezier(.42, 0, .58, 1)
+        infinite;
+}
+
+
+/* =========================================================
+   KUNAI ITEMS
+========================================================= */
+
+.download-sheet .kunai-item {
+
+    position: absolute;
+
+    width: 32px;
+    height: 32px;
+
+    filter:
+        drop-shadow(
+            0 0 6px #facc15
+        )
+        drop-shadow(
+            0 0 10px #ef4444
+        );
+
+    transition:
+        transform .22s
+        cubic-bezier(.1, .9, .2, 1);
+}
+
+.download-sheet .kunai-left {
+
+    top: 2px;
+    left: 2px;
+
+    transform:
+        rotate(35deg);
+}
+
+.download-sheet .kunai-right {
+
+    right: 2px;
+    bottom: 2px;
+
+    transform:
+        rotate(215deg);
+}
+
+
+/* =========================================================
+   KUNAI CLASH
+========================================================= */
+
+.download-sheet
+.anime-kunai-card.kunai-clashing
+.kunai-left {
+
+    transform:
+        translate(12px, 10px)
+        rotate(85deg)
+        scale(1.15) !important;
+}
+
+.download-sheet
+.anime-kunai-card.kunai-clashing
+.kunai-right {
+
+    transform:
+        translate(-12px, -10px)
+        rotate(265deg)
+        scale(1.15) !important;
+}
+
+
+/* =========================================================
+   CLASH SPARK
+========================================================= */
+
+.download-sheet .clash-spark {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 14px;
+    height: 14px;
+
+    margin-top: -7px;
+    margin-left: -7px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 10%,
+            #facc15 60%,
+            transparent 100%
+        );
+
+    box-shadow:
+        0 0 16px #ffffff,
+        0 0 28px #facc15,
+        0 0 35px #ef4444;
+
+    opacity: 0;
+
+    transform: scale(0);
+
+    pointer-events: none;
+
+    z-index: 40;
+}
+
+.download-sheet
+.anime-kunai-card.kunai-clashing
+.clash-spark {
+
+    animation:
+        clashFlash
+        .35s
+        ease-out
+        forwards;
+}
+
+
+@keyframes clashFlash {
+
+    0% {
+        opacity: 1;
+        transform: scale(.2);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(2.6);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+}
+
+
+/* =========================================================
+   SHATTER SHAKE
+========================================================= */
+
+.download-sheet .anime-card.shatter-shake {
+
+    animation:
+        movieboxButtonShake
+        .45s
+        cubic-bezier(.36, .07, .19, .97)
+        both;
+}
+
+
+@keyframes movieboxButtonShake {
+
+    10%,
+    90% {
+
+        transform:
+            translate3d(
+                -1px,
+                2px,
+                0
+            );
+    }
+
+    20%,
+    80% {
+
+        transform:
+            translate3d(
+                2px,
+                -1px,
+                0
+            );
+
+        filter:
+            brightness(1.6);
+    }
+
+    30%,
+    50%,
+    70% {
+
+        transform:
+            translate3d(
+                -3px,
+                0,
+                0
+            );
+    }
+
+    40%,
+    60% {
+
+        transform:
+            translate3d(
+                3px,
+                1px,
+                0
+            );
+    }
+
+    100% {
+
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            );
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   EXPLOSION TARGET
+========================================================= */
+
+.download-sheet .explode-target {
+
+    position: relative;
+
+    z-index: 30;
+
+    transform-origin:
+        center center;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+}
+
+
+/* =========================================================
+   ICON EXPLOSION
+========================================================= */
+
+.download-sheet
+.explode-target.icon-exploding {
+
+    animation:
+        movieboxIconExplosion
+        .75s
+        cubic-bezier(.1, .9, .2, 1)
+        forwards !important;
+}
+
+
+@keyframes movieboxIconExplosion {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        filter:
+            brightness(1);
+
+        opacity: 1;
+    }
+
+    20% {
+
+        transform:
+            scale(1.35)
+            rotate(15deg);
+
+        filter:
+            brightness(3)
+            drop-shadow(
+                0 0 12px #ffffff
+            );
+
+        opacity: 1;
+    }
+
+    35% {
+
+        transform:
+            scale(.1);
+
+        opacity: 0;
+
+        filter:
+            blur(6px);
+    }
+
+    85% {
+
+        transform:
+            scale(.1);
+
+        opacity: 0;
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   SHATTER PARTICLES
+========================================================= */
+
+.download-sheet .shatter-piece {
+
+    position: absolute;
+
+    z-index: 999;
+
+    pointer-events: none;
+
+    border-radius: 2px;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .download-sheet-content {
+
+        gap: 10px;
+
+        padding:
+            12px
+            10px
+            18px;
+    }
+
+
+    .download-sheet .anime-card {
+
+        min-height: 56px;
+
+        height: 56px;
+
+        padding:
+            6px 8px;
+    }
+
+
+    /* -----------------------------------------
+       CENTERED MOBILE EYE
+    ----------------------------------------- */
+
+    .download-sheet .wandering-eye {
+
+        width: 44px;
+        height: 44px;
+
+        top: 50%;
+        left: 50%;
+
+        /*
+           44 / 2 = 22
+        */
+        margin-left: -22px;
+        margin-top: -22px;
+    }
+
+
+    /* -----------------------------------------
+       CENTERED MOBILE KUNAI
+    ----------------------------------------- */
+
+    .download-sheet .kunai-orbit-box {
+
+        width: 44px;
+        height: 44px;
+
+        top: 50%;
+        left: 50%;
+
+        margin-left: -22px;
+        margin-top: -22px;
+    }
+
+
+    .download-sheet .kunai-item {
+
+        width: 24px;
+        height: 24px;
+    }
+
+}

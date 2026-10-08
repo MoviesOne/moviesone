@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <!-- MovieBox favicon / brand icon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180x180.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>MovieBox Admin Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #070709;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            padding: 24px 16px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            background: #0d0d10;
+        }
+
+        .admin-brand {
+            padding: 0 12px 28px;
+        }
+
+        .admin-brand h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .admin-brand h1 span {
+            color: #e50914;
+        }
+
+        .admin-brand p {
+            margin-top: 6px;
+            color: #777780;
+            font-size: 12px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .admin-nav button {
+            width: 100%;
+            padding: 13px 14px;
+            border: 0;
+            border-radius: 9px;
+            background: transparent;
+            color: #a9a9b1;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .admin-nav button:hover,
+        .admin-nav button.active {
+            background: rgba(229, 9, 20, 0.12);
+            color: #ffffff;
+        }
+
+        .admin-main {
+            flex: 1;
+            padding: 32px;
+            overflow-x: hidden;
+        }
+
+        .admin-header {
+            margin-bottom: 30px;
+        }
+
+        .admin-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .admin-header p {
+            margin-top: 7px;
+            color: #85858e;
+            font-size: 14px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .dashboard-card {
+            min-height: 130px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            background: #101014;
+        }
+
+        .dashboard-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .dashboard-card p {
+            margin-top: 10px;
+            color: #777780;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .admin-sidebar {
+                width: 210px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .admin-layout {
+                display: block;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .admin-main {
+                padding: 22px 16px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-brand">
+                <h1>Movie<span>Box</span></h1>
+                <p>Administration Panel</p>
+            </div>
+
+            <nav class="admin-nav">
+                <button class="active">Dashboard</button>
+                <button>Movies</button>
+                <button>Series</button>
+              <button onclick="window.location.href='admin-featured-lists.html'">
+    Featured Lists
+</button>
+                <button>Hero / Home</button>
+                <button>Ads Control</button>
+                <button>Sources</button>
+                <button>Settings</button>
+            </nav>
+
+        </aside>
+
+        <main class="admin-main">
+
+            <header class="admin-header">
+                <h2>Dashboard</h2>
+                <p>Manage your MovieBox website from one place.</p>
+            </header>
+
+            <section class="dashboard-grid">
+
+                <div class="dashboard-card">
+                    <h3>Movies</h3>
+                    <p>Manage movie content and settings.</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Series</h3>
+                    <p>Manage series, seasons and episodes.</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Featured Lists</h3>
+                    <p>Manage featured collections and posters.</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Hero / Home</h3>
+                    <p>Manage homepage hero content.</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Ads Control</h3>
+                    <p>Manage advertising settings and placements.</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Sources</h3>
+                    <p>Manage streaming source settings.</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Settings</h3>
+                    <p>Manage admin and website settings.</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

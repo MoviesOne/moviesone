@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <!-- MovieBox favicon / brand icon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180x180.png">
+
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MovieBox - Series</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<!-- Lucide -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./js/seo.js"></script>
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/series.css">
+<link rel="stylesheet" href="./css/download-sheet.css">
+</head>
+
+<!-- DOWNLOAD BOTTOM SHEET -->
+<div class="download-sheet" id="downloadSheet">
+<div
+    class="download-sheet-backdrop"
+    id="sheetBackdrop"
+    data-download-close
+
+></div>
+  <div class="download-sheet-panel">
+    <div class="download-sheet-handle"></div>
+<div class="download-sheet-header">
+
+    <div class="header-text">
+
+        <span class="download-sheet-kicker">
+            DOWNLOAD
+        </span>
+
+        <h2 id="downloadSheetTitle">
+            Download • The Odyssey
+        </h2>
+
+        <p id="downloadSheetSubtitle">
+            Choose your preferred download option
+        </p>
+
+    </div>
+<button
+    class="download-sheet-close"
+    id="sheetCloseBtn"
+    data-download-close
+    aria-label="Close"
+    type="button"
+>
+    ×
+</button>
+
+</div>
+    <!-- 6 BUTTONS GRID -->
+    <div class="download-sheet-content">
+      
+      <!-- OPTION 1: ScreenScope (Itachi) -->
+      <div class="card-wrapper">
+        <div class="option-label label-itachi">OPTION 1</div>
+        <button
+    type="button"
+    class="anime-card anime-sharingan-card"
+    data-download-option="1"
+    data-shatter-colors="#ff1e2e,#ff4d4d,#ffffff,#000000"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-itachi explode-target">
+              <svg viewBox="0 0 120 120">
+                <defs>
+                  <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ff1e2e"/>
+                    <stop offset="60%" stop-color="#cc0818"/>
+                    <stop offset="85%" stop-color="#73000b"/>
+                    <stop offset="100%" stop-color="#260003"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="60" cy="60" r="58" fill="url(#irisGrad)" stroke="#110002" stroke-width="4"/>
+                <g fill="#000000">
+                  <path d="M60 60 C 50 34, 55 10, 60 2 C 68 18, 74 42, 60 60 Z"/>
+                  <path d="M60 60 C 50 34, 55 10, 60 2 C 68 18, 74 42, 60 60 Z" transform="rotate(120 60 60)"/>
+                  <path d="M60 60 C 50 34, 55 10, 60 2 C 68 18, 74 42, 60 60 Z" transform="rotate(240 60 60)"/>
+                </g>
+                <circle cx="60" cy="60" r="11" fill="#000000"/>
+                <circle cx="60" cy="60" r="4" fill="#ff2636"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-itachi explode-target">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-red">SCREENSCOPE</span>
+              <span class="subtitle sub-red">ScreenScope DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-red" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- OPTION 2: 02 MDR (Byakugan) -->
+      <div class="card-wrapper">
+        <div class="option-label label-byakugan">OPTION 2</div>
+       <button
+    type="button"
+    class="anime-card anime-byakugan-card"
+    data-download-option="2"
+    data-shatter-colors="#ffffff,#d8b4fe,#c084fc,#4c1d95"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-byakugan explode-target">
+              <svg viewBox="0 0 100 100">
+                <defs>
+                  <radialGradient id="byakuganIris" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="40%" stop-color="#f3e8ff"/>
+                    <stop offset="70%" stop-color="#d8b4fe"/>
+                    <stop offset="90%" stop-color="#a855f7"/>
+                    <stop offset="100%" stop-color="#581c87"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="50" cy="50" r="48" fill="url(#byakuganIris)" stroke="#ffffff" stroke-width="2.5"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="6,3" opacity="0.8"/>
+                <circle cx="50" cy="50" r="14" fill="#ffffff" stroke="#c084fc" stroke-width="2"/>
+                <circle cx="50" cy="50" r="4" fill="#a855f7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-whitepurple explode-target">
+              <svg class="download-icon icon-dark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-whitepurple">02 MDR</span>
+              <span class="subtitle sub-whitepurple">Multi Audio</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-whitepurple" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- OPTION 3: NHD (Kurama) -->
+      <div class="card-wrapper">
+        <div class="option-label label-yellow">OPTION 3</div>
+      <button
+    type="button"
+    class="anime-card anime-kurama-card"
+    data-download-option="3"
+    data-shatter-colors="#fde047,#f59e0b,#ea580c,#ffffff"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-kurama explode-target">
+              <svg viewBox="0 0 120 100">
+                <polygon points="34,44 14,8 44,28" fill="#ea580c"/>
+                <polygon points="86,44 106,8 76,28" fill="#ea580c"/>
+                <path d="M30 46 L46 36 L74 36 L90 46 L96 66 L78 84 L60 92 L42 84 L24 66 Z" fill="#f59e0b" stroke="#9a3412" stroke-width="2"/>
+                <polygon points="40,55 48,52 47,58 42,59" fill="#ef4444"/>
+                <polygon points="80,55 72,52 73,58 78,59" fill="#ef4444"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-yellow explode-target">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-yellow">NHD</span>
+              <span class="subtitle sub-yellow">NHD Download</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-yellow" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- OPTION 4: Streamrip (Sasuke) -->
+      <div class="card-wrapper">
+        <div class="option-label label-purple">OPTION 4</div>
+      <button
+    type="button"
+    class="anime-card anime-purple-card"
+    data-download-option="4"
+    data-shatter-colors="#a855f7,#c084fc,#ffffff,#3b0764"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-sasuke explode-target">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="58" fill="#7e22ce" stroke="#1a0429" stroke-width="4"/>
+                <g stroke="#000000" stroke-width="5" stroke-linecap="round">
+                  <line x1="60" y1="8" x2="60" y2="112" />
+                  <line x1="15" y1="34" x2="105" y2="86" />
+                  <line x1="15" y1="86" x2="105" y2="34" />
+                </g>
+                <circle cx="60" cy="60" r="16" fill="#000000" stroke="#c084fc" stroke-width="2.2"/>
+                <circle cx="60" cy="60" r="5.5" fill="#ffffff"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-purple explode-target">
+              <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-purple">STREAMRIP</span>
+              <span class="subtitle sub-purple">Streamrip DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-purple" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- OPTION 5: DDL -->
+      <div class="card-wrapper">
+        <div class="option-label label-ddl">OPTION 5</div>
+       <button
+    type="button"
+    class="anime-card anime-ddl-card"
+    data-download-option="5"
+    data-shatter-colors="#4ade80,#ef4444,#ffffff,#fef08a"
+>
+          <div class="roaming-bg-layer">
+            <div class="wandering-eye eye-ddl explode-target">
+              <svg viewBox="0 0 100 100">
+                <path d="M18 42 Q50 96 82 42 Z" fill="#ef4444" stroke="#ffffff" stroke-width="2.5"/>
+                <ellipse cx="50" cy="42" rx="34" ry="11" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-ddl explode-target">
+              <svg class="download-icon icon-ddl-dark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-ddl">DDL</span>
+              <span class="subtitle sub-ddl">High Quality DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-ddl" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- OPTION 6: Nxsha (Dual Kunai Clash) -->
+      <div class="card-wrapper">
+        <div class="option-label label-kunai">OPTION 6</div>
+     <button
+    type="button"
+    class="anime-card anime-kunai-card"
+    data-download-option="6"
+    data-shatter-colors="#facc15,#ef4444,#ffffff,#7f1d1d"
+>
+          <div class="roaming-bg-layer">
+            <div class="kunai-orbit-box explode-target">
+              <div class="clash-spark"></div>
+              <svg class="kunai-item kunai-left" viewBox="0 0 60 60">
+                <polygon points="30,4 20,24 26,24 26,38 34,38 34,24 40,24" fill="#cbd5e1" stroke="#b91c1c" stroke-width="1.2"/>
+                <circle cx="30" cy="54" r="4.5" fill="none" stroke="#cbd5e1" stroke-width="2.2"/>
+              </svg>
+              <svg class="kunai-item kunai-right" viewBox="0 0 60 60">
+                <polygon points="30,4 20,24 26,24 26,38 34,38 34,24 40,24" fill="#fef08a" stroke="#b91c1c" stroke-width="1.2"/>
+                <circle cx="30" cy="54" r="4.5" fill="none" stroke="#fef08a" stroke-width="2.2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-left">
+            <div class="icon-box-kunai explode-target">
+              <svg class="download-icon icon-kunai-dark" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span class="title title-kunai">NXSHA</span>
+              <span class="subtitle sub-kunai">Fast Speed DL</span>
+            </div>
+          </div>
+          <svg class="external-icon ext-kunai" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<body class="series-page-body">
+
+
+   <!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<div id="sidebar-container"></div>
+
+<!-- Sidebar Overlay -->
+
+<div
+    id="sidebar-overlay"
+    onclick="closeSidebar()"
+    class="fixed inset-0 z-40 hidden bg-black/70"
+></div>
+
+   <!-- =========================================
+     HEADER
+========================================= -->
+
+<header
+    class="sticky top-0 z-30 border-b border-white/10 bg-[#070709]/95 backdrop-blur-xl"
+>
+
+    <div
+        class="flex h-[72px] items-center gap-4 px-4 md:px-6"
+    >
+
+        <!-- Menu -->
+        <button
+            type="button"
+            onclick="openSidebar()"
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-white/80 transition hover:bg-white/10 hover:text-white"
+        >
+
+            <i
+                data-lucide="menu"
+                class="h-5 w-5"
+            ></i>
+
+        </button>
+
+
+        <!-- Back -->
+        <button
+            type="button"
+            onclick="seriesNavigateHome()"
+            class="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-white/80 transition hover:bg-white/10 hover:text-white md:flex"
+        >
+
+            <i
+                data-lucide="arrow-left"
+                class="h-5 w-5"
+            ></i>
+
+        </button>
+
+
+        <!-- Search -->
+        <div class="relative max-w-xl flex-1">
+
+            <i
+                data-lucide="search"
+                class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40"
+            ></i>
+
+            <input
+                id="series-search-input"
+                type="text"
+                placeholder="Search movies, TV shows..."
+                autocomplete="off"
+                onclick="openSearchScreen()"
+                class="h-11 w-full rounded-xl border border-white/10 bg-white/5 pl-11 pr-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-white/20"
+            >
+
+        </div>
+
+
+        <!-- Ad Free -->
+        <button
+            type="button"
+            class="hidden shrink-0 rounded-xl bg-[#ff4d00] px-4 py-2.5 text-sm font-bold text-white transition hover:brightness-110 sm:block"
+        >
+            Ad-Free in 0:29
+        </button>
+
+    </div>
+
+
+    <!-- Search Results -->
+
+    <div
+        id="series-search-results"
+        class="relative mx-auto hidden max-w-xl"
+    ></div>
+
+</header>
+
+    <!-- =====================================================
+         SERIES CONTENT
+    ====================================================== -->
+
+    <main id="series-detail-content"></main>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+   <script src="./js/api.js"></script>
+<script src="./js/series.js"></script>
+<script src="./js/download-sheet.js"></script>
+<script src="./js/app.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================
+       LUCIDE ICONS
+    ========================= */
+
+    if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+    }
+
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+  window.openSidebar = function () {
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const overlay =
+        document.getElementById("sidebar-overlay");
+
+    if (sidebar) {
+        sidebar.classList.remove("-translate-x-full");
+        sidebar.classList.add("translate-x-0");
+    }
+
+    if (overlay) {
+        overlay.classList.remove("hidden");
+    }
+
+    document.body.classList.add("sidebar-open");
+
+};
+
+
+window.closeSidebar = function () {
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const overlay =
+        document.getElementById("sidebar-overlay");
+
+    if (sidebar) {
+        sidebar.classList.remove("translate-x-0");
+        sidebar.classList.add("-translate-x-full");
+    }
+
+    if (overlay) {
+        overlay.classList.add("hidden");
+    }
+
+    document.body.classList.remove("sidebar-open");
+
+};
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+   window.seriesNavigateWatchLater = function () {
+
+    window.location.href =
+        "index.html#watch-later";
+
+};
+
+
+window.focusSeriesSearch = function () {
+
+    closeSidebar();
+
+    const input =
+        document.getElementById("series-search-input");
+
+    if (input) {
+        setTimeout(() => {
+            input.focus();
+        }, 200);
+    }
+
+};
+
+
+window.seriesNavigateHistory = function () {
+
+    window.location.href =
+        "index.html#history";
+
+};
+
+
+window.seriesNavigateAds = function () {
+
+    window.location.href =
+        "index.html#ads";
+
+};
+
+
+/* =========================
+   SEARCH
+========================= */
+    const searchInput =
+        document.getElementById(
+            "series-search-input"
+        );
+
+    const searchResults =
+        document.getElementById(
+            "series-search-results"
+        );
+
+    let searchTimer = null;
+
+
+    if (!searchInput) {
+        return;
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            const query =
+                this.value.trim();
+
+            clearTimeout(searchTimer);
+
+
+            if (!query) {
+
+                if (searchResults) {
+
+                    searchResults.innerHTML = "";
+
+                    searchResults.classList.remove(
+                        "show"
+                    );
+
+                }
+
+                return;
+
+            }
+
+
+            searchTimer = setTimeout(
+                () => {
+
+                    seriesSearch(query);
+
+                },
+                350
+            );
+
+        }
+    );
+
+
+    searchInput.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Enter") {
+                return;
+            }
+
+            const query =
+                this.value.trim();
+
+            if (!query) {
+                return;
+            }
+
+
+            window.location.href =
+                "index.html?search=" +
+                encodeURIComponent(query);
+
+        }
+    );
+
+
+    /* =========================
+       LIVE SEARCH
+    ========================= */
+
+    async function seriesSearch(query) {
+
+        if (!searchResults) {
+            return;
+        }
+
+
+        searchResults.classList.add("show");
+
+
+        searchResults.innerHTML = `
+            <div class="series-search-loading">
+                Searching...
+            </div>
+        `;
+
+
+        try {
+
+            const response =
+                await apiGet(
+                    `/movies/search?query=${encodeURIComponent(query)}`
+                );
+
+
+            const items =
+                response?.results ||
+                response?.data ||
+                [];
+
+
+            if (
+                !Array.isArray(items) ||
+                items.length === 0
+            ) {
+
+                searchResults.innerHTML = `
+                    <div class="series-search-empty">
+                        No results found.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            searchResults.innerHTML =
+                items
+                    .slice(0, 6)
+                    .map(item => {
+
+                        const id =
+                            item.id ||
+                            item.tmdbId;
+
+                        const title =
+                            item.title ||
+                            item.name ||
+                            "Untitled";
+
+                        const image =
+                            item.poster ||
+                            item.poster_path ||
+                            "";
+
+                        const type =
+                            item.media_type === "tv"
+                                ? "TV Series"
+                                : "Movie";
+
+
+                        return `
+                            <button
+                                type="button"
+                                class="series-search-item"
+                                data-id="${escapeHtml(String(id))}"
+                                data-type="${item.media_type === "tv" ? "tv" : "movie"}"
+                            >
+
+                                ${
+                                    image
+                                        ? `
+                                            <img
+                                                src="${escapeHtml(image)}"
+                                                alt=""
+                                            >
+                                          `
+                                        : ""
+                                }
+
+                                <span>
+
+                                    <strong>
+                                        ${escapeHtml(title)}
+                                    </strong>
+
+                                    <small>
+                                        ${type}
+                                    </small>
+
+                                </span>
+
+                            </button>
+                        `;
+
+                    })
+                    .join("");
+
+
+            /* Result click */
+
+            searchResults
+                .querySelectorAll(".series-search-item")
+                .forEach(item => {
+
+                    item.addEventListener(
+                        "click",
+                        () => {
+
+                            const id =
+                                item.dataset.id;
+
+                            const type =
+                                item.dataset.type;
+
+
+                            if (type === "tv") {
+
+                                window.location.href =
+                                    `series.html?series=${encodeURIComponent(id)}&from=series`;
+
+                            } else {
+
+                                window.location.href =
+                                    `index.html?movie=${encodeURIComponent(id)}&from=series`;
+
+                            }
+
+                        }
+                    );
+
+                });
+
+
+        } catch (error) {
+
+            console.error(
+                "Series search error:",
+                error
+            );
+
+
+            searchResults.innerHTML = `
+                <div class="series-search-empty">
+                    Search unavailable.
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    /* =========================
+       CLOSE SEARCH
+    ========================= */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const searchBox =
+                document.querySelector(
+                    ".series-search"
+                );
+
+
+            if (
+                searchResults &&
+                searchBox &&
+                !searchBox.contains(event.target) &&
+                !searchResults.contains(event.target)
+            ) {
+
+                searchResults.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+});
+
+</script>
+<section id="search-screen" class="search-overlay hidden">
+    <div class="search-overlay-bg" onclick="closeSearchScreen()"></div>
+
+    <div class="search-modal">
+        <div class="search-modal-header">
+            <h2>Search</h2>
+
+            <button
+                type="button"
+                class="search-close-btn"
+                onclick="closeSearchScreen()"
+            >
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+
+        <div class="search-modal-input">
+            <i data-lucide="search" class="search-modal-icon"></i>
+
+            <input
+                id="search-page-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Search..."
+            >
+        </div>
+
+        <div id="search-results" class="search-modal-results">
+            <div class="search-empty-state">
+                <i data-lucide="search"></i>
+                <span>Search movies and series</span>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+fetch("./sidebar.html")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Sidebar load nahi hua");
+        }
+        return response.text();
+    })
+    .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+    })
+    .catch(error => console.error("Sidebar error:", error));
+</script>
+
+</body>
+
+</html>

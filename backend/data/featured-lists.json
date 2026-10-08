@@ -1,0 +1,32 @@
+[
+    {
+        "id": "anime-series",
+        "title": "Anime Series",
+        "description": "Explore popular anime series.",
+        "poster": "https://imgs.search.brave.com/fEzgJdCH8V8LKtT7J-EpP7pztIX1sHuCUhdv552JMAo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93MC5w/ZWFrcHguY29tL3dh/bGxwYXBlci81NDYv/NjI3L0hELXdhbGxw/YXBlci1tdXNpYy1o/ZWFkcGhvbmVzLWJs/YWNrLWNoaWNrLXNl/eHktaGFpci1naXJs/LWFuaW1lLWhvdC10/aHVtYm5haWwuanBn"
+    },
+    {
+        "id": "animation",
+        "title": "Animation",
+        "description": "Explore animated movies.",
+        "poster": "https://imgs.search.brave.com/zfgvQYFN2b13bsAgwfmTxgiKUihuDOvaiuEVPRCF5bM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2JjLzA0/LzAzL2JjMDQwM2Q3/ZWI0ZjAxOTYxMWQ1/MzExYzQ5NzUyODk1/LmpwZw"
+    },
+    {
+        "id": "korean",
+        "title": "Korean Drama & Movies",
+        "description": "Explore Korean movies.",
+        "poster": "https://imgs.search.brave.com/9NiQax_vNadoWqcxplzUuxFH9kTRPhsjLf7m88O6drI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/d2hhdHMtb24tbmV0/ZmxpeC5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjYvMDEv/dGVhY2gteW91LWEt/bGVzc29uLW5ldGZs/aXgtay1kcmFtYS00/ODB4MjcwLmpwZw"
+    },
+    {
+        "id": "marvel",
+        "title": "The Marvel Universe",
+        "description": "Explore Marvel movies.",
+        "poster": "https://imgs.search.brave.com/7kMOFZLGNsTHN_YH6vXOelznwDmuHPMCrN5H4-lJ7Sw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDI0MzY0/ODYuanBn"
+    },
+    {
+        "id": "dc",
+        "title": "The DC Universe",
+        "description": "Explore DC movies.",
+        "poster": "https://imgs.search.brave.com/aTCEbPwpY9icfdRumEBtfpwpDP2tY7b2DNEondDEVq4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9lZGl0/b3JpYWwucm90dGVu/dG9tYXRvZXMuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE4/LzA5L0hlbnJ5LUNh/dmlsbC1TdXBlcm1h/bi1sYXJnZS5qcGc"
+    }
+]

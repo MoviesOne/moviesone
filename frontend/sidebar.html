@@ -1,0 +1,116 @@
+<!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside
+        id="sidebar"
+      class="fixed left-0 top-0 z-[60] h-full w-[280px] -translate-x-full border-r border-white/10 bg-[#0b0b0e] opacity-100 transition-transform duration-300"
+    >
+
+        <div class="flex h-full flex-col">
+
+
+<!-- Premium MoviesOne Logo -->
+<div class="flex items-center gap-3 px-6 py-6">
+
+    <div class="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff3548] via-[#e50920] to-[#850014] shadow-[0_0_18px_rgba(229,9,32,0.4)] ring-1 ring-red-300/30">
+        <svg viewBox="0 0 48 48" class="h-9 w-9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 37V11L24 26L41 11V37" stroke="white" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+            <path d="M15 37V20M33 37V20" stroke="#ffb0b8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 11L12 16M41 11L36 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-[#111318] bg-[#ffb000]"></span>
+    </div>
+
+    <span class="bg-gradient-to-r from-white via-white to-red-300 bg-clip-text text-xl font-extrabold tracking-tight text-transparent">
+        Movies<span class="text-[#ff3548]">One</span>
+    </span>
+
+</div>
+
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4">
+
+                <button
+onclick="window.location.href='index.html'"
+                    class="nav-item flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold text-white/80 transition hover:bg-white/5 hover:text-white"
+                >
+                    <i data-lucide="home" class="h-5 w-5"></i>
+                    <span>Home</span>
+                </button>
+
+                <button
+                   onclick="openSearchScreen()"
+                    class="nav-item flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold text-white/80 transition hover:bg-white/5 hover:text-white"
+                >
+                    <i data-lucide="search" class="h-5 w-5"></i>
+                    <span>Search</span>
+                </button>
+
+              <button
+    type="button"
+    onclick="window.location.href='popular.html'"
+    class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
+>
+    <i data-lucide="clapperboard" class="h-5 w-5"></i>
+    <span>Movies</span>
+</button>
+
+              <button
+    type="button"
+   onclick="window.location.href='trending-tv.html'"
+    class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
+>
+    <i data-lucide="tv" class="h-5 w-5"></i>
+    <span>TV Shows</span>
+</button>
+
+                <button
+                    onclick="navigateTo('ads')"
+                    class="nav-item flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold text-white/80 transition hover:bg-white/5 hover:text-white"
+                >
+                    <i data-lucide="badge-dollar-sign" class="h-5 w-5"></i>
+                    <span>Ads Rules</span>
+                </button>
+
+            </nav>
+
+
+            <!-- Bottom Links -->
+            <div class="border-t border-white/10 px-4 py-4">
+
+              <button
+    type="button"
+   onclick="window.location.href='index.html?screen=legal'"
+    class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
+>
+    <i data-lucide="shield-check" class="h-5 w-5"></i>
+    <span>DMCA & Legal</span>
+</button>
+
+                
+<button
+    type="button"
+    onclick="window.location.href='index.html?screen=about'"
+    class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
+>
+    <i data-lucide="info" class="h-5 w-5"></i>
+    <span>About Us</span>
+</button>
+
+<button
+    type="button"
+   onclick="window.location.href='index.html?screen=help'"
+    class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
+>
+    <i data-lucide="life-buoy" class="h-5 w-5"></i>
+    <span>Help &amp; Support</span>
+</button>
+
+
+            </div>
+
+        </div>
+
+    </aside>

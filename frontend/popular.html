@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <!-- MovieBox favicon / brand icon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180x180.png">
+
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Popular Movies - MovieBox</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body class="min-h-screen bg-[#08080a] text-white">
+
+
+<div id="sidebar-container"></div>
+
+
+<!-- Overlay -->
+
+<div
+    id="sidebar-overlay"
+    onclick="toggleSidebar()"
+    class="fixed inset-0 z-40 hidden bg-black/70"
+></div>
+
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header
+    class="sticky top-0 z-30 border-b border-white/10 bg-[#08080a]/90 backdrop-blur-xl"
+>
+
+    <div
+        class="mx-auto flex max-w-[1600px] items-center gap-4 px-5 py-4 md:px-10 lg:px-14"
+    >
+<button
+    onclick="toggleSidebar()"
+    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
+>
+    <i data-lucide="menu" class="h-5 w-5"></i>
+</button>
+
+
+        <a
+            href="index.html"
+            class="hidden shrink-0 text-xl font-black tracking-tight sm:block"
+        >
+            Movie<span class="text-orange-500">Box</span>
+        </a>
+
+
+        <div class="flex-1">
+
+          <input
+    id="popular-search"
+    type="search"
+    placeholder="Search movies, TV shows..."
+    onclick="openSearchScreen()"
+    class="h-12 w-full rounded-xl border border-white/10 bg-white/5 px-4 text-sm text-white outline-none placeholder:text-white/30 focus:border-orange-500/50"
+>
+
+        </div>
+
+
+        <button
+            class="hidden shrink-0 rounded-xl bg-orange-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-400 sm:block"
+        >
+            Ad-Free
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main
+    class="mx-auto max-w-[1600px] px-5 py-8 md:px-10 lg:px-14"
+>
+
+    <section>
+
+        <div class="mb-7">
+
+            <h1 class="text-2xl font-black tracking-tight md:text-3xl">
+                Popular Movies
+            </h1>
+
+            <p class="mt-2 text-sm text-white/40">
+                Explore popular movies on MovieBox.
+            </p>
+
+        </div>
+
+
+        <!-- GRID -->
+
+        <div
+            id="popular-grid"
+            class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+        >
+
+            <!-- Skeleton -->
+
+            <div class="loading-card">
+                <div class="loading-poster"></div>
+                <div class="loading-info">
+                    <div class="loading-line"></div>
+                    <div class="loading-line short"></div>
+                </div>
+            </div>
+
+            <div class="loading-card">
+                <div class="loading-poster"></div>
+                <div class="loading-info">
+                    <div class="loading-line"></div>
+                    <div class="loading-line short"></div>
+                </div>
+            </div>
+
+            <div class="loading-card">
+                <div class="loading-poster"></div>
+                <div class="loading-info">
+                    <div class="loading-line"></div>
+                    <div class="loading-line short"></div>
+                </div>
+            </div>
+
+            <div class="loading-card">
+                <div class="loading-poster"></div>
+                <div class="loading-info">
+                    <div class="loading-line"></div>
+                    <div class="loading-line short"></div>
+                </div>
+            </div>
+
+            <div class="loading-card">
+                <div class="loading-poster"></div>
+                <div class="loading-info">
+                    <div class="loading-line"></div>
+                    <div class="loading-line short"></div>
+                </div>
+            </div>
+
+            <div class="loading-card">
+                <div class="loading-poster"></div>
+                <div class="loading-info">
+                    <div class="loading-line"></div>
+                    <div class="loading-line short"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Loading -->
+
+        <div
+            id="popular-loading"
+            class="hidden items-center justify-center py-10"
+        >
+
+            <div class="flex items-center gap-3 text-sm text-white/40">
+
+                <div
+                    class="h-5 w-5 animate-spin rounded-full border-2 border-white/10 border-t-orange-500"
+                ></div>
+
+                Loading more movies...
+
+            </div>
+
+        </div>
+
+
+        <!-- End -->
+
+        <div
+            id="popular-end"
+            class="hidden py-10 text-center text-sm text-white/30"
+        >
+            You've reached the end.
+        </div>
+
+
+        <!-- Sentinel -->
+
+        <div
+            id="popular-sentinel"
+            class="h-10"
+        ></div>
+
+    </section>
+
+</main>
+
+
+
+
+<!-- =========================================
+     SEARCH OVERLAY
+========================================= -->
+
+<section
+    id="search-screen"
+    class="search-overlay hidden"
+>
+
+    <div
+        class="search-overlay-bg"
+        onclick="closeSearchScreen()"
+    ></div>
+
+
+    <div class="search-modal">
+
+        <div class="search-modal-header">
+
+            <h2>Search</h2>
+
+            <button
+                type="button"
+                class="search-close-btn"
+                onclick="closeSearchScreen()"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <div class="search-modal-input">
+
+            <i
+                data-lucide="search"
+                class="search-modal-icon"
+            ></i>
+
+            <input
+                id="search-page-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Search..."
+            >
+
+        </div>
+
+
+        <div
+            id="search-results"
+            class="search-modal-results"
+        >
+
+            <div class="search-empty-state">
+
+                <i data-lucide="search"></i>
+
+                <span>
+                    Search movies and series
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/api.js"></script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./js/seo.js"></script>
+
+<script src="js/popular.js"></script>
+<script src="js/app.js"></script>
+
+
+
+<script>
+
+function toggleSidebar() {
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const overlay =
+        document.getElementById("sidebar-overlay");
+
+    if (!sidebar) return;
+
+    const isClosed =
+        sidebar.classList.contains(
+            "-translate-x-full"
+        );
+
+    if (isClosed) {
+
+        sidebar.classList.remove(
+            "-translate-x-full"
+        );
+
+        if (overlay) {
+            overlay.classList.remove("hidden");
+        }
+
+    } else {
+
+        sidebar.classList.add(
+            "-translate-x-full"
+        );
+
+        if (overlay) {
+            overlay.classList.add("hidden");
+        }
+
+    }
+
+}
+
+
+function closeSidebar() {
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const overlay =
+        document.getElementById("sidebar-overlay");
+
+    if (sidebar) {
+        sidebar.classList.add(
+            "-translate-x-full"
+        );
+    }
+
+    if (overlay) {
+        overlay.classList.add("hidden");
+    }
+
+}
+
+
+function navigateTo(screen) {
+
+    closeSidebar();
+
+    switch (screen) {
+
+        case "home":
+            window.location.href =
+                "index.html";
+            break;
+
+        case "search":
+            window.location.href =
+                "index.html?screen=search";
+            break;
+
+        case "movies":
+            window.location.href =
+                "index.html?screen=movies";
+            break;
+
+        case "tv":
+            window.location.href =
+                "index.html?screen=tv";
+            break;
+
+        case "watch-later":
+            window.location.href =
+                "index.html?screen=watch-later";
+            break;
+
+        case "history":
+            window.location.href =
+                "index.html?screen=history";
+            break;
+
+        case "ads":
+            window.location.href =
+                "index.html?screen=ads";
+            break;
+
+    }
+
+}
+
+</script>
+
+<script>
+fetch("./sidebar.html")
+    .then(response => {
+        if (!response.ok) throw new Error("Sidebar load nahi hua");
+        return response.text();
+    })
+    .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+    })
+    .catch(error => console.error("Sidebar error:", error));
+</script>
+
+
+</body>
+
+</html>
