@@ -829,7 +829,7 @@ clearInterval(checkScreens);
            LOAD FEATURED LIST POSTERS FROM BACKEND
         ========================================== */
 
-        fetch("http://localhost:4000/api/featured-lists")
+        fetch("https://moviesone.onrender.com/api/featured-lists")
             .then(function (response) {
                 return response.json();
             })

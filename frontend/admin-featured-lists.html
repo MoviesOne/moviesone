@@ -668,7 +668,7 @@ async function loadFeaturedLists() {
     try {
 
         const response = await fetch(
-            "http://localhost:4000/api/featured-lists"
+            "https://moviesone.onrender.com/api/featured-lists"
         );
 
         const data =
@@ -856,7 +856,7 @@ async function saveFeaturedPoster() {
     try {
 
         const response = await fetch(
-            `http://localhost:4000/api/featured-lists/${encodeURIComponent(list.id)}`,
+            `https://moviesone.onrender.com/api/featured-lists/${encodeURIComponent(list.id)}`,
             {
                 method: "PUT",
 

@@ -654,7 +654,7 @@ async function saveMovieChanges() {
     try {
 
         const response = await fetch(
-            `http://localhost:4000/api/movies/${tmdbId}`,
+            `https://moviesone.onrender.com/api/movies/${tmdbId}`,
             {
                 method: "PUT",
 
@@ -714,7 +714,7 @@ async function addMovieToMovieBox(encodedMovie, button) {
     try {
 
         const response = await fetch(
-            "http://localhost:4000/api/movies/add",
+            "https://moviesone.onrender.com/api/movies/add",
             {
                 method: "POST",
 
@@ -817,7 +817,7 @@ async function removeMovieFromMovieBox(encodedMovie, button) {
     try {
 
         const response = await fetch(
-            `http://localhost:4000/api/movies/${tmdbId}`,
+            `https://moviesone.onrender.com/api/movies/${tmdbId}`,
             {
                 method: "DELETE"
             }
@@ -899,7 +899,7 @@ async function removeMovieFromMovieBox(encodedMovie, button) {
 
     try {
         const response = await fetch(
-            `http://localhost:4000/api/movies/search?query=${encodeURIComponent(query)}`
+            `https://moviesone.onrender.com/api/movies/search?query=${encodeURIComponent(query)}`
         );
 
         if (!response.ok) {
@@ -918,7 +918,7 @@ console.log("ADMIN SEARCH RESPONSE:", data);
             : [];
 
 const managedResponse = await fetch(
-    "http://localhost:4000/api/movies/managed"
+    "https://moviesone.onrender.com/api/movies/managed"
 );
 
 const managedData = await managedResponse.json();
