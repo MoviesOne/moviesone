@@ -3881,3 +3881,484 @@ padding: 5px 2px !important;
 font-size: 9px !important;
 }
 }
+
+/* ==========================================
+   MOVIEBOX — CONSOLIDATED MOBILE SERIES FIX
+   Desktop styles remain unchanged.
+========================================== */
+
+@media screen and (max-width: 650px) {
+
+    /* Prevent horizontal overflow */
+    .series-page {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        padding: 0 12px 28px !important;
+        margin: 0 auto !important;
+        overflow-x: clip !important;
+        box-sizing: border-box !important;
+    }
+
+    .series-page *,
+    .series-page *::before,
+    .series-page *::after {
+        box-sizing: border-box !important;
+    }
+
+    .series-page .section {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 20px 0 !important;
+    }
+
+    .series-page .section h2 {
+        font-size: 20px !important;
+        line-height: 1.35 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    /* Reserved ad space */
+    .series-page .ad-slot--banner {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* VIDEO PLAYER */
+    .series-page .series-player {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 12px 0 !important;
+        padding: 0 !important;
+    }
+
+    .series-page .series-frame {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #08080b !important;
+        border-radius: 12px !important;
+    }
+
+    .series-page #series-iframe {
+        position: absolute !important;
+        inset: 0 !important;
+        display: none;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        border: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #08080b !important;
+    }
+
+    .series-page .series-player-placeholder {
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 16px !important;
+        text-align: center !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    /* PREVIOUS / NOW PLAYING / NEXT */
+    .series-page .series-nav {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(76px, auto) minmax(0, 1fr) !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 12px 0 22px !important;
+        padding: 10px !important;
+    }
+
+    .series-page .series-nav > button {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 40px !important;
+        padding: 8px 5px !important;
+        font-size: 13px !important;
+        white-space: nowrap !important;
+    }
+
+    .series-page .series-nav > button span {
+        display: inline !important;
+    }
+
+    .series-page .series-now-playing {
+        min-width: 0 !important;
+        text-align: center !important;
+    }
+
+    .series-page .series-now-playing small {
+        display: block !important;
+        font-size: 9px !important;
+        line-height: 1.4 !important;
+        letter-spacing: .7px !important;
+    }
+
+    .series-page .series-now-playing strong {
+        display: block !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        white-space: nowrap !important;
+    }
+
+    /* STREAMING SOURCE BUTTONS */
+    .series-page .source-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .series-page .source-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 7px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 48px !important;
+        margin: 0 !important;
+        padding: 11px 10px !important;
+        overflow: hidden !important;
+        text-align: left !important;
+    }
+
+    .series-page .source-btn > span {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        overflow-wrap: anywhere !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+    }
+
+    .series-page .source-btn small {
+        flex: 0 0 auto !important;
+        font-size: 10px !important;
+    }
+
+    .series-page .source-btn > i,
+    .series-page .source-btn > svg {
+        flex: 0 0 auto !important;
+        width: 15px !important;
+        height: 15px !important;
+    }
+
+    /* EPISODES HEADING + SEASON SELECTOR */
+    .series-page .download-head {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .series-page .download-head > div {
+        min-width: 0 !important;
+    }
+
+    .series-page .download-head h2 {
+        max-width: 100% !important;
+        margin-bottom: 0 !important;
+        font-size: 19px !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .series-page #season-select {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 44px !important;
+        margin: 0 !important;
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+    }
+
+    /* EPISODE LIST */
+    .series-page .downloads {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-top: 14px !important;
+    }
+
+    .series-page .download-card {
+        display: grid !important;
+        grid-template-columns: minmax(0, 104px) minmax(0, 1fr) !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        overflow: hidden !important;
+    }
+
+    .series-page .download-card .still {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: 16 / 10 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        border-radius: 8px !important;
+        align-self: start !important;
+    }
+
+    .series-page .download-card .still > img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        object-fit: cover !important;
+    }
+
+    .series-page .episode-image-placeholder {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .series-page .episode-number-overlay {
+        position: absolute !important;
+        right: 5px !important;
+        bottom: 5px !important;
+        z-index: 1 !important;
+        max-width: calc(100% - 10px) !important;
+        font-size: 10px !important;
+    }
+
+    .series-page .download-info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .series-page .download-info .title-row {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+    }
+
+    
+.series-page .download-info h3 {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    overflow-wrap: anywhere !important;
+}
+    .series-page .download-info > small {
+        display: block !important;
+        max-width: 100% !important;
+        font-size: 10px !important;
+        line-height: 1.5 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    
+.series-page .download-info > p {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    overflow-wrap: anywhere !important;
+}
+
+    .series-page .episode-download-button {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: flex-start !important;
+        gap: 6px !important;
+        width: auto !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 34px !important;
+        margin: 2px 0 0 !important;
+        padding: 7px 11px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+    }
+
+    .series-page .episode-download-button svg,
+    .series-page .episode-download-button i {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    /* SERIES POSTER + OVERVIEW */
+    .series-page .series-info {
+        display: grid !important;
+        grid-template-columns: 88px minmax(0, 1fr) !important;
+        align-items: start !important;
+        gap: 14px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 16px !important;
+        background-position: center !important;
+        background-size: cover !important;
+        border-radius: 12px !important;
+    }
+
+    .series-page .series-info > div {
+        min-width: 0 !important;
+    }
+
+    .series-page .series-info .poster {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 2 / 3 !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+    }
+
+    .series-page .series-info h1 {
+        margin: 7px 0 !important;
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .series-page .series-info .meta {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px 10px !important;
+        font-size: 11px !important;
+    }
+
+    .series-page .series-info p {
+        margin: 9px 0 0 !important;
+        font-size: 12px !important;
+        line-height: 1.6 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    /* SERIES DETAILS */
+    .series-page .details {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .series-page .details > div {
+        min-width: 0 !important;
+        padding: 11px !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .series-page .details small,
+    .series-page .details b {
+        display: block !important;
+        max-width: 100% !important;
+        overflow-wrap: anywhere !important;
+    }
+}
+
+/* EXTRA-SMALL PHONES */
+@media screen and (max-width: 380px) {
+
+    .series-page {
+        padding-right: 9px !important;
+        padding-left: 9px !important;
+    }
+
+    .series-page .series-nav {
+        grid-template-columns: minmax(0, 1fr) minmax(65px, auto) minmax(0, 1fr) !important;
+        gap: 5px !important;
+        padding: 7px !important;
+    }
+
+    .series-page .series-nav > button {
+        gap: 3px !important;
+        padding: 7px 3px !important;
+        font-size: 12px !important;
+    }
+
+    .series-page .download-card {
+        grid-template-columns: minmax(0, 88px) minmax(0, 1fr) !important;
+        gap: 9px !important;
+        padding: 8px !important;
+    }
+
+    .series-page .download-info h3 {
+        font-size: 13px !important;
+    }
+
+    .series-page .series-info {
+        grid-template-columns: 72px minmax(0, 1fr) !important;
+        gap: 10px !important;
+        padding: 12px !important;
+    }
+
+    .series-page .series-info h1 {
+        font-size: 16px !important;
+    }
+
+    .series-page .details {
+        gap: 8px !important;
+    }
+}
