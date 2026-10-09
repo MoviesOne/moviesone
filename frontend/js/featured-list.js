@@ -529,7 +529,7 @@ function createFeaturedCard(movie) {
     return `
         <article
             class="movie-card group cursor-pointer"
-            onclick="window.location.replace('${targetUrl}')"
+            onclick="window.location.href='${targetUrl}'"
         >
 
             <!-- POSTER -->
