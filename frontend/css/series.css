@@ -3271,3 +3271,93 @@ padding: 7px !important;
 
 
 }
+/* ==========================================
+MOVIEBOX — MOBILE SERIES & PLAYER FIX
+Add at the very end of series.css
+========================================== */
+
+@media (max-width: 650px) {
+
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.series-page,
+.series-page-body,
+.series-detail-page,
+#series-detail-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.series-page,
+#series-detail-content {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+/* Player wrapper */
+.video-container,
+.player-container,
+.video-player-container,
+.series-player,
+#video-container,
+#player-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Responsive video aspect ratio */
+.video-container iframe,
+.player-container iframe,
+.video-player-container iframe,
+.series-player iframe,
+#video-container iframe,
+#player-container iframe,
+.video-container video,
+.player-container video,
+.video-player-container video,
+.series-player video {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    border: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Episode cards */
+.downloads {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.download-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+
+}
+
+@media (max-width: 380px) {
+.series-page,
+#series-detail-content {
+padding-left: 7px !important;
+padding-right: 7px !important;
+}
+}
