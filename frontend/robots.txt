@@ -10,4 +10,4 @@ Disallow: /download-options.html
 
 # Sitemap is submitted in Google Search Console / Bing Webmaster Tools.
 # Add your live sitemap URL here after the production domain is known:
-# Sitemap: https://YOUR-DOMAIN.example/sitemap.xml
+# Sitemap: https://moviesone.sbs/sitemap.xml

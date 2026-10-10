@@ -12,15 +12,15 @@ The frontend now has:
 After the real domain is known, run from `frontend/`:
 
 ```bash
-SITE_URL=https://example.com node tools/generate-sitemap.js
-```
+SITE_URL=https://moviesone.sbs node tools/generate-sitemap.js
+
 
 This creates `frontend/sitemap.xml` with stable public entry pages. Do not publish a sitemap containing a placeholder domain.
 
 ## Google
 
 1. Verify the production domain in Google Search Console.
-2. Submit `https://YOUR-DOMAIN/sitemap.xml` under Sitemaps.
+2. Submit `https://moviesone.sbs/sitemap.xml` under Sitemaps.
 3. Inspect the homepage and important public pages with URL Inspection.
 4. Request indexing where appropriate.
 

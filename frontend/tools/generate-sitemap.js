@@ -1,7 +1,7 @@
 /*
  * MovieBox sitemap generator.
  * Usage:
- *   SITE_URL=https://example.com node tools/generate-sitemap.js
+ *   SITE_URL=https://moviesone.sbs node tools/generate-sitemap.js
  *
  * This intentionally includes only stable public entry pages. Movie/series
  * detail URLs use query parameters in the current frontend and should be
@@ -12,7 +12,7 @@ const path = require('path');
 
 const siteUrl = String(process.env.SITE_URL || '').trim().replace(/\/$/, '');
 if (!siteUrl || !/^https?:\/\//i.test(siteUrl)) {
-    console.error('Missing SITE_URL. Example: SITE_URL=https://example.com node tools/generate-sitemap.js');
+    console.error('Missing SITE_URL. Example: SITE_URL=https://moviesone.sbs node tools/generate-sitemap.js');
     process.exit(1);
 }
 

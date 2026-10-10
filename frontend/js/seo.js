@@ -6,27 +6,27 @@
 
     const STATIC_SEO = {
         "index.html": {
-            title: "MovieBox - Movies & TV Series",
+            title: "MoviesOne - Movies & TV Series",
             description: "Discover movies and TV series on MovieBox with trending, popular, new releases, genres and streaming options."
         },
         "popular.html": {
-            title: "Popular Movies - MovieBox",
+            title: "Popular Movies - MoviesOne",
             description: "Browse popular movies on MovieBox, with ratings, release information and movie details."
         },
         "new-releases.html": {
-            title: "New Releases - MovieBox",
+            title: "New Releases - MovieOne",
             description: "Explore the latest movie releases on MovieBox and discover recently added titles."
         },
         "trending-tv.html": {
-            title: "Trending TV Shows - MovieBox",
+            title: "Trending TV Shows - MovieOne",
             description: "Discover trending TV shows and series on MovieBox, including ratings, release dates and details."
         },
         "featured-list.html": {
-            title: "Featured Lists - MovieBox",
+            title: "Featured Lists - MoviesOne",
             description: "Explore curated movie and TV collections on MovieBox."
         },
         "series.html": {
-            title: "TV Series - MovieBox",
+            title: "TV Series - MoviesOne",
             description: "Watch and explore TV series on MovieBox with seasons, episodes and streaming options."
         }
     };
@@ -126,7 +126,7 @@
         upsertJsonLd({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "MovieBox",
+            "name": "MoviesOne",
             "url": getBaseUrl(),
             "potentialAction": {
                 "@type": "SearchAction",
@@ -153,7 +153,7 @@
         const isTv = mediaType === "tv" || movie.media_type === "tv";
         const schemaType = isTv ? "TVSeries" : "Movie";
 
-        document.title = `${title}${year ? ` (${year})` : ""} - MovieBox`;
+        document.title = `${title}${year ? ` (${year})` : ""} - MoviesOne`;
         upsertMeta("description", description);
         upsertCanonical(canonical);
         upsertProperty("og:type", "video.tv_show");
@@ -188,7 +188,7 @@
         upsertJsonLd(schema);
     }
 
-    window.MovieBoxSEO = {
+    window.MoviesOneSEO = {
         applyStaticSeo,
         applyMovieSeo,
         getCanonicalForCurrentPage
