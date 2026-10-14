@@ -360,9 +360,11 @@ if (screen === "tv-shows") {
 
 }
 
+
 /* =========================================
    BROWSER BACK / FORWARD NAVIGATION
 ========================================= */
+
 
 window.addEventListener("popstate", () => {
     const params = new URLSearchParams(window.location.search);
@@ -371,6 +373,40 @@ window.addEventListener("popstate", () => {
         params.get("from") ||
         sessionStorage.getItem("movieBoxReturnPage") ||
         "home";
+
+    // Restore search after returning from the movie player.
+    if (
+        sessionStorage.getItem("movieBoxSearchReturn") === "1" &&
+        !movieId &&
+        from === "search"
+    ) {
+        const searchScreen = document.getElementById("search-screen");
+        const pageInput = document.getElementById("search-page-input");
+        const globalInput = document.getElementById("global-search");
+        const savedQuery =
+            sessionStorage.getItem("movieBoxSearchQuery") || "";
+
+        if (searchScreen) {
+            searchScreen.classList.remove("hidden");
+            document.body.classList.add("search-open");
+        }
+
+        if (pageInput) pageInput.value = savedQuery;
+        if (globalInput) globalInput.value = savedQuery;
+
+        if (
+            Array.isArray(movieBoxSearchResults) &&
+            movieBoxSearchResults.length
+        ) {
+            renderSearchResults();
+        } else if (savedQuery) {
+            performSearch(savedQuery);
+        } else {
+            showSearchEmptyState();
+        }
+
+        return;
+    }
 
     if (movieId) {
         navigateTo("movie");
@@ -383,13 +419,25 @@ window.addEventListener("popstate", () => {
     }
 
     const platform = params.get("platform");
-    if (params.get("screen") === "platform" && platform && PLATFORM_INFO[platform]) {
+
+    if (
+        params.get("screen") === "platform" &&
+        platform &&
+        PLATFORM_INFO[platform]
+    ) {
         openPlatform(platform, false);
+        return;
+    }
+
+    if (from === "platform") {
+        navigateTo("home");
         return;
     }
 
     navigateTo(from);
 });
+
+
 /* =========================================
    OPEN MOVIE / SERIES
 ========================================= */
@@ -533,17 +581,7 @@ function setupSearch() {
        HEADER SEARCH BAR
     ------------------------------------- */
 
-    if (globalInput) {
-
-        globalInput.addEventListener(
-            "focus",
-            () => {
-
-                openSearchScreen();
-
-            }
-        );
-
+       if (globalInput) {
 
         globalInput.addEventListener(
             "click",
@@ -555,7 +593,6 @@ function setupSearch() {
         );
 
     }
-
 
     /* -------------------------------------
        OVERLAY SEARCH INPUT
@@ -698,26 +735,19 @@ function openSearchScreen() {
        Focus search input.
     */
 
-    setTimeout(() => {
+    
+       if (pageInput) {
 
-        if (pageInput) {
+        pageInput.focus();
 
-          
-            pageInput.focus();
+        const cursorPosition = pageInput.value.length;
 
-            const cursorPosition = pageInput.value.length;
+        pageInput.setSelectionRange(
+            cursorPosition,
+            cursorPosition
+        );
 
-            pageInput.setSelectionRange(
-                cursorPosition,
-                cursorPosition
-            );
-
-
-        }
-
-    }, 80);
-
-
+    }
     initializeIcons();
 
 }
@@ -827,9 +857,19 @@ async function performSearch(
        Sync both inputs.
     */
 
-    syncSearchInputs(
-        cleanQuery
-    );
+
+
+const pageInput = document.getElementById("search-page-input");
+const globalInput = document.getElementById("global-search");
+
+const currentQuery =
+    pageInput?.value?.trim() ||
+    globalInput?.value?.trim() ||
+    cleanQuery;
+
+syncSearchInputs(currentQuery);
+
+
 
 
     const results =
@@ -1229,67 +1269,46 @@ function createSearchResultItem(
    OPEN SEARCH RESULT
 ========================================= */
 
-function openSearchResult(
-    movieId,
-    mediaType
-) {
 
-    if (!movieId) {
-        return;
-    }
+function openSearchResult(movieId, mediaType) {
+    if (!movieId) return;
 
+    const pageInput = document.getElementById("search-page-input");
+    const globalInput = document.getElementById("global-search");
 
-    closeSearchScreen();
+    const query = pageInput?.value || globalInput?.value || "";
 
+    // Save search state before opening the player.
+    sessionStorage.setItem("movieBoxSearchQuery", query);
+    sessionStorage.setItem("movieBoxSearchReturn", "1");
 
-    /*
-       Movie
-    */
+    if (mediaType === "movie") {
+        const url = new URL(window.location.href);
 
-    if (
-        mediaType === "movie"
-    ) {
+        url.searchParams.set("movie", movieId);
+        url.searchParams.set("from", "search");
+        url.searchParams.set("type", "movie");
 
-        navigateTo(
-            "movie"
+        window.history.pushState(
+            { movieBoxSearchPlayer: true },
+            "",
+            url
         );
 
+        navigateTo("movie");
 
-        if (
-            typeof loadMovieDetails
-            === "function"
-        ) {
-
-            loadMovieDetails(
-                movieId,
-                "movie"
-            );
-
+        if (typeof loadMovieDetails === "function") {
+            loadMovieDetails(movieId, "movie");
         }
 
         return;
-
     }
 
-
-    /*
-       TV / SERIES
-    */
-
-    if (
-        mediaType === "tv"
-        || mediaType === "series"
-    ) {
-
+    if (mediaType === "tv" || mediaType === "series") {
         window.location.href =
-            `series.html?series=${encodeURIComponent(
-                movieId
-            )}&from=search`;
-
+            `series.html?series=${encodeURIComponent(movieId)}&from=search`;
     }
-
 }
-
 
 /* =========================================
    EMPTY SEARCH STATE

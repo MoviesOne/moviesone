@@ -1621,59 +1621,35 @@ function downloadEpisode(
     });
 
 }
+
 function goBackSeries() {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
+    const type = params.get("type");
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const from =
-        params.get("from");
-
-    const type =
-        params.get("type");
-
-
-    // ==========================================
-    // FEATURED LIST
-    // ==========================================
-
-    if (
-        from === "featured-list"
-    ) {
-
-        window.location.href =
-            `featured-list.html?type=${encodeURIComponent(
-                type || "animation"
-            )}`;
-
+    // If opened from search, return to the previous search page.
+    if (from === "search") {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "index.html";
+        }
         return;
     }
 
-// ==========================================
-    // TRENDING TV
-    // ==========================================
-
-    if (
-        from === "trending-tv"
-    ) {
-
+    if (from === "featured-list") {
         window.location.href =
-            "trending-tv.html";
-
+            `featured-list.html?type=${encodeURIComponent(type || "animation")}`;
         return;
     }
 
+    if (from === "trending-tv") {
+        window.location.href = "trending-tv.html";
+        return;
+    }
 
-    // ==========================================
-    // DEFAULT
-    // ==========================================
-
-    window.location.href =
-        "index.html";
+    window.location.href = "index.html";
 }
-
 
 // ==========================================
 // ERROR
