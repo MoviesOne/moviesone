@@ -1328,6 +1328,7 @@ function goBackFromMovie() {
         return;
     }
 
+    
     // ==========================================
     // STREAMING PLATFORM
     // ==========================================
@@ -1340,7 +1341,11 @@ function goBackFromMovie() {
             "movieBoxReturnPage"
         );
 
-        navigateTo("platform");
+        sessionStorage.removeItem(
+            "movieBoxReturnType"
+        );
+
+        window.history.back();
 
         return;
     }

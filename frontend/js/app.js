@@ -702,9 +702,16 @@ function openSearchScreen() {
 
         if (pageInput) {
 
+          
             pageInput.focus();
 
-            pageInput.select();
+            const cursorPosition = pageInput.value.length;
+
+            pageInput.setSelectionRange(
+                cursorPosition,
+                cursorPosition
+            );
+
 
         }
 
