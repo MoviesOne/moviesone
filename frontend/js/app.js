@@ -859,6 +859,7 @@ async function performSearch(
 
 
 
+
 const pageInput = document.getElementById("search-page-input");
 const globalInput = document.getElementById("global-search");
 
@@ -867,7 +868,14 @@ const currentQuery =
     globalInput?.value?.trim() ||
     cleanQuery;
 
-syncSearchInputs(currentQuery);
+if (globalInput && document.activeElement !== globalInput) {
+    globalInput.value = currentQuery;
+}
+
+if (pageInput && document.activeElement !== pageInput) {
+    pageInput.value = currentQuery;
+}
+
 
 
 
